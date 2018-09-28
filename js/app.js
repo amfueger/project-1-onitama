@@ -130,11 +130,34 @@ class Pawn{
 	senseiStream(){
 
 	},
-	ifRedPawn(color){
+	pawnSetup(){
 		if(this.color == "red"){
-
+		} for(let i = 0; i <= 5; i++) {
+			this.pawnnumber = i;
+			while(this.pawnnumber = 1) {
+				this.x = 1;
+				this.y = 1;
+			}
+			while(this.pawnnumber == 2){
+				this.x = 2;
+				this.y = 1;
+			}
+			while(this.pawnnumber == 3){
+				this.x = 3;
+				this.y = 1;
+			}
+			while(this.pawnnumber == 4){
+				this.x = 4;
+				this.y = 1;
+			}
+			while(this.pawnnumber == 5){
+				this.x = 5;
+				this.y = 1;
+			}
 		}
-		return false;
+		if(this.color == "blue"){
+			
+		}
 	},
 }
 
