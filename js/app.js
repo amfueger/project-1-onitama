@@ -111,8 +111,8 @@ redPawn[0].y = redPawn[0].y + card[1].redmovement1Y
 //Pawn class
 class Pawn{
 	constructor(x, y, color, pawnnumber, sensei){
-		this.x: null,
-		this.y: null, 
+		this.x: pawnSetup(),
+		this.y: pawnSetup(), 
 		this.color: null;
 		this.pawnnumber: 
 		this.sensei: this.isSensei();
