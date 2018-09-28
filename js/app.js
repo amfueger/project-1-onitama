@@ -38,10 +38,10 @@ const deck = [{
 
 }, {
 	name: "Elephant",
-	redmovement1x: 
-	redmovement1y: 
-	redmovement2x: 
-	redmovement2y: 
+	redmovement1x: -1
+	redmovement1y: +1
+	redmovement2x: -1
+	redmovement2y: +0
 	redmovement3x: 
 	redmovement3y: 
 	redmovement4x:
@@ -74,6 +74,10 @@ const deck = [{
 
 }
 
+//Pawn 1's x coordinate = Pawn 1's x coordinate + card property movement 1's x #. 
+//redPawn[0].x = redPawn[0].x + card[1].redmovement1x
+//redPawn[0].y = redPawn[0].y + card[1].redmovement1Y
+//make sure these stay integers
 
 
 
