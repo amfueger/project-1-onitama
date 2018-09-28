@@ -14,7 +14,10 @@ const deck = [{
 	bluemovement2y: +1,
 	bluemovement3x: -1,
 	bluemovement3y: -1,
-	startingposition: null, //when card is selected, assign this to pawn's position. 
+	redplayerx: null,
+	redplayery: null,
+	blueplayerx: null,
+	blueplayery: null,
 
 }, {
 	name: "Goose",
@@ -34,8 +37,10 @@ const deck = [{
 	bluemovement3y: +0,
 	bluemovement4x: -1,
 	bluemovement4y: +1,
-	startingposition: null, //when card is selected, assign this to pawn's position. 
-
+	redplayerx: null,
+	redplayery: null,
+	blueplayerx: null,
+	blueplayery: null,
 }, {
 	name: "Elephant",
 	redmovement1x: -1
@@ -54,7 +59,10 @@ const deck = [{
 	bluemovement3y: -1
 	bluemovement4x: -1
 	bluemovement4y: +0
-	startingposition: null, //when card is selected, assign this to pawn's position. 
+	redplayerx: null,
+	redplayery: null,
+	blueplayerx: null,
+	blueplayery: null,
 
 }, {
 	name: "Frog",
@@ -70,16 +78,91 @@ const deck = [{
 	bluemovement2y: 
 	bluemovement3x: 
 	bluemovement3y: 
-	startingposition: null, //when card is selected, assign this to pawn's position. 
+	redplayerx: null,
+	redplayery: null,
+	blueplayerx: null,
+	blueplayery: null,
 
-}
+}]
+
 
 //Pawn 1's x coordinate = Pawn 1's x coordinate + card property movement 1's x #. 
 //redPawn[0].x = redPawn[0].x + card[1].redmovement1x
 //redPawn[0].y = redPawn[0].y + card[1].redmovement1Y
 //make sure these stay integers
 //run check on pawn's x and y coordinates after, then if pawns x,y matches square's x,y, move it. 
+//Pawn gets it's coordinates from 
+//redPawn[0].x = $('#id-of-square').data(x); and 
+//redPawn[0].y = $('#id-of-square')data(y);
+//on.('click' will pull id.
+/*
+
+Let's say redPawn[0].x = 1 and redPawn[0].y = 1
+We select redPlayerCard[0]
+redPlayerCard[0] asks for redPawn[0].x and assigns that value to redplayerx, and the same is true for y value. Check to make sure it is an integer!!
+redPawn[0].x = redPawn[0].x + card[1].redmovement1x
+redPawn[0].y = redPawn[0].y + card[1].redmovement1Y
 
 
 
-]
+
+
+*/
+//Pawn class
+class Pawn{
+	constructor(x, y, color, pawnnumber, sensei){
+		this.x: null,
+		this.y: null, 
+		this.color: null;
+		this.pawnnumber: 
+		this.sensei: this.isSensei();
+
+	},
+	isSensei() {
+		if(this.pawnnumber == 3) {
+			this.sensei = true;
+		} 
+		return false;
+	},
+	senseiStone(){
+
+	},
+	senseiStream(){
+
+	},
+	ifRedPawn(color){
+		if(this.color == "red"){
+
+		}
+		return false;
+	},
+}
+
+//Begin Game function
+const game = {
+//solicit button click for color. Player one, which color would you rather be?
+//make pawns
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
