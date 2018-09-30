@@ -189,7 +189,13 @@ const game = {
 //solicit button click for color. Player one, which color would you rather be?
 //make pawns
 
-
+//pass in the coordinates for redmovementx and y on Blue's turn.
+//Make sure arguments comes in as a number!!!! 
+convertMovementForBlue(redmovementx, redmovementy) {
+	let blueMovementX = (blueMovementX * -1);
+	let blueMovementY = (blueMovementY * -1);
+	return blueMovementX, blueMovementY
+}
 
 
 
