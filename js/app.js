@@ -164,11 +164,12 @@ class Game {
 	}
 	generateDeck(deck){
 		//had const deck, made a full copy, then use random to pull 5 cards out it with *
-		let fullDeck = deck.slice();
+		let fullDeck = [];
+		fullDeck = deck.slice(0); //fullDeck means 16 deck copy
 		//console.log(fullDeck);
-		let currentDeck = [];
+		let currentDeck = []; //five cards
 		for(let i = 0; i <= 4; i++) {
-			currentDeck[i] = fullDeck.splice(Math.floor(Math.random * fullDeck.length))[0]; //splice is returning the card inside of an array, a one element array, and running this multiple times, splice removes the card itself, so no multiple options. 
+			currentDeck[i] = fullDeck.splice(Math.floor(Math.random * fullDeck.length),1)[0]; //splice is returning the card inside of an array, a one element array, and running this multiple times, splice removes the card itself, so no multiple options. 
 			console.log(fullDeck);
 			console.log(currentDeck);
 		}
