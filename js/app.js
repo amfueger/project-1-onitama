@@ -133,9 +133,16 @@ class Game {
 	
 	gamePlay() {
 // 		5. Pawn selected - click pawn on board OR click separate button
+clearClickables();
+setupTurn();
+
+
 // the jquery selector class we're listening for
 //put attributes on the first line of the red pawns
 // 	1. Text prompt to select which of player's two cards to use
+
+
+
 // 		2. User clicks card they wish to use
 // 6. Card selected - card enlarges for user to see, but does not cover board
 // 	1. Card shows possible movements, black space indicating where pawn is identified on the board. 
@@ -152,13 +159,24 @@ class Game {
 // 	3. Pawn moves to new div. 
 	}
 	gameSetup() {
-		//what is game setup
-		//1. generate 5 pawns for each color
+		//THIS WORKS
 		this.redPawns = this.generatePawns("red", 1);
 		this.bluePawns = this.generatePawns("blue", 5);
 		this.currentDeck = this.generateDeck(deck);
 		this.pushCardsintoHand(this.currentDeck);
-		$('')redPawns.attr('class', 'clickable')
+	}
+	setupTurn(){
+
+		$('')redPawns.addClass('clickable');
+		//using addclass becuase I don't want to override existing class
+		//put pawns down and make them clickable
+		//look at whoseTurn
+		//find the elements red-pawn and blue-pawn
+
+	}
+	clearClickables(){
+		//for removal of clickable class after turn.
+		$('.clickable').remove();
 	}
 	senseiStone(pawnnumber){
 
