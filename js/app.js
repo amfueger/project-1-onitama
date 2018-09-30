@@ -133,9 +133,9 @@ class Game {
 	
 	gamePlay() {
 // 		5. Pawn selected - click pawn on board OR click separate button
+
 clearClickables();
 setupTurn();
-
 
 // the jquery selector class we're listening for
 //put attributes on the first line of the red pawns
@@ -165,30 +165,30 @@ setupTurn();
 		this.currentDeck = this.generateDeck(deck);
 		this.pushCardsintoHand(this.currentDeck);
 	}
-	// setupTurn(){
-
-	// 	$('')redPawns.addClass('clickable');
-	// 	//using addclass becuase I don't want to override existing class
-	// 	//put pawns down and make them clickable
-	// 	//look at whoseTurn
-	// 	//find the elements red-pawn and blue-pawn
-
-	// }
-	clearClickables(){
-		//for removal of clickable class after turn.
-		while($('.clickable')) {
-			console.log($('.clickable'));
-			$('.clickable').removeClass("clickable");
-			
+	setupTurn(){
+		if (whoseTurn == this.redPawns) {
+			$('.red-pawn').addClass('clickable');
+			//add to x,y positions to start. 
+		} else if (whoseTurn == this.bluePawns) {
+			$('.blue-pawn').addClass('clickable')
+		} else {
+			return false;
 		}
+		//using addclass becuase I don't want to override existing class
+		//put pawns down and make them clickable
+		//look at whoseTurn
+		//find the elements red-pawn and blue-pawn
+
 	}
+	clearClickables(){
+			$('.clickable').removeClass('clickable'); 
+	 }
 	senseiStone(pawnnumber){
 
 	}
 	senseiStream(x, y){
 
 	}
-
 	generatePawns(color, y) {
 		//note, DO NOT CHANGE STARTING POINT OF I, you will fuck everything.
 			let pawns = [];
