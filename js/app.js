@@ -8,12 +8,6 @@ const deck = [{
 	redmovement2y: -1,
 	redmovement3x: +1,
 	redmovement3y: +1,
-	bluemovement1x: +1,
-	bluemovement1y: +0,
-	bluemovement2x: -1,
-	bluemovement2y: +1,
-	bluemovement3x: -1,
-	bluemovement3y: -1,
 	redplayerx: null,
 	redplayery: null,
 	blueplayerx: null,
@@ -29,36 +23,20 @@ const deck = [{
 	redmovement3y: +0,
 	redmovement4x: +1,
 	redmovement4y: -1,
-	bluemovement1x: +1,
-	bluemovement1y: -1,
-	bluemovement2x: +1,
-	bluemovement2y: +0,
-	bluemovement3x: -1,
-	bluemovement3y: +0,
-	bluemovement4x: -1,
-	bluemovement4y: +1,
 	redplayerx: null,
 	redplayery: null,
 	blueplayerx: null,
 	blueplayery: null,
 }, {
 	name: "Elephant",
-	redmovement1x: -1
-	redmovement1y: +1
-	redmovement2x: -1
-	redmovement2y: +0
-	redmovement3x: +1
-	redmovement3y: +1
-	redmovement4x: +1
-	redmovement4y: +0
-	bluemovement1x: +1 
-	bluemovement1y: -1
-	bluemovement2x: +1
-	bluemovement2y: +0
-	bluemovement3x: -1
-	bluemovement3y: -1
-	bluemovement4x: -1
-	bluemovement4y: +0
+	redmovement1x: -1,
+	redmovement1y: +1,
+	redmovement2x: -1,
+	redmovement2y: +0,
+	redmovement3x: +1,
+	redmovement3y: +1,
+	redmovement4x: +1,
+	redmovement4y: +0,
 	redplayerx: null,
 	redplayery: null,
 	blueplayerx: null,
@@ -66,18 +44,12 @@ const deck = [{
 
 }, {
 	name: "Frog",
-	redmovement1x: 
-	redmovement1y: 
-	redmovement2x: 
-	redmovement2y: 
-	redmovement3x: 
-	redmovement3y: 
-	bluemovement1x: 
-	bluemovement1y: 
-	bluemovement2x: 
-	bluemovement2y: 
-	bluemovement3x: 
-	bluemovement3y: 
+	redmovement1x: 0,
+	redmovement1y: 0,
+	redmovement2x: 0,
+	redmovement2y: 0,
+	redmovement3x: 0,
+	redmovement3y: 0,
 	redplayerx: null,
 	redplayery: null,
 	blueplayerx: null,
@@ -109,97 +81,58 @@ redPawn[0].y = redPawn[0].y + card[1].redmovement1Y
 
 */
 //Pawn class
-class Pawn{
-	constructor(x, y, color, pawnnumber){
-		this.x: pawnSetup(),
-		this.y: pawnSetup(), 
-		this.color: null,
-		this.pawnnumber: 0,
-		this.live: true,
+class Pawn{                                 
+	constructor(x, y, color, pawnnumber, live){
+		this.x = x;
+		this.y = y;
+		this.color = color;
+		this.pawnnumber = pawnnumber;
+		this.live = live;
 	// don't need sensei because it's always three. 
 	//storing pawns in an array, will hide within the array using boolean instead of removing because otherwise that changes the position of the pawns upon calling them. 
-	},
+	};
 }
 
 //Begin Game function
-const game = {
+class Game {
 //solicit button click for color. Player one, which color would you rather be?
 //make pawns
-
 //pass in the coordinates for redmovementx and y on Blue's turn.
 //Make sure arguments comes in as a number!!!! 
 //define the movement in the card for one of the pieces. When I write the moving piece, it checks to see if the pawn is blue, it multiplies the movement by -1
 
 
 	gameSetup() {
-		///generate 5 pawns for each color
+		//what is game setup
+		//1. generate 5 pawns for each color
+		this.redPawns = this.generatePawns("red", 1);
+		this.bluePawns = this.generatePawns("blue", 5);
+		//2. pull 5 randomcards from deck object, assign to array
+		//fiveCardDeck(); //could be named something different
+		//3. pull last two cards of array and store in red player hand array (pop())
+
+		//4. pull last two cards of array and store in blue player hand array pop()
+		//5. assign last card in deck array to variable sideCard
+
+	}
+	senseiStone(pawnnumber){
+
+	}
+	senseiStream(x, y){
 
 	}
 
-
-	senseiStone(pawnnumber){
-
-	},
-	senseiStream(x, y){
-
-	},
-	redPawnGeneration() {
-			for (let i = 1; i < 6; i++) {
-			const color = "red";
-			pawnnumber = i;
-			//y is always going to be 1 on the line
-			//x increments up. 
-			x = i;
-			y = 1;
-			let redPawns = [];
-			let redPawns[i] = new Pawn(x, y, color, pawnnumber);
-			return redPawns;
-		
-		};
-		
-	}, bluePawnGeneration() {
-		if (this.color == "blue") {
-				for (let i = 0; i <= 5; i++) {
-					this.pawnnumber = i;
-				}
-				while (this.pawnnumber = 1) {
-					this.x = 1;
-					this.y = 5;
-				}
-				while (this.pawnnumber == 2) {
-					this.x = 2;
-					this.y = 5;
-				}
-				while (this.pawnnumber == 3) {
-					this.x = 3;
-					this.y = 5;
-				}
-				while (this.pawnnumber == 4) {
-					this.x = 4;
-					this.y = 5;
-				}
-				while (this.pawnnumber == 5) {
-					this.x = 5;
-					this.y = 5;
-				}
-				return
-			}
-		}
-	},
-
-	//where do the pawns live? They are objects. Simplest way is to have the game class have an array where pawn objects live. Consider using a dead boolean value.
-
-
-
-
-
-
-
-
-
-
-
-
-
+	generatePawns(color, y) {
+		//note, DO NOT CHANGE STARTING POINT OF I, you will fuck everything.
+			let pawns = [];
+				for (let i = 1; i < 6; i++) {
+					pawns.push(new Pawn(i, y, color, i, true));
+					//pushing a new pawn to an array
+				};
+			return pawns;
+	}
 
 }
+
+let game = new Game();
+game.gameSetup();
