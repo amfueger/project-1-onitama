@@ -144,33 +144,19 @@ const game = {
 
 	},
 	redPawnGeneration() {
-		pawnSetup() {
-			if (this.color == "red") {
-				for (let i = 0; i <= 5; i++) {
-					this.pawnnumber = i;
-				}
-				while (this.pawnnumber = 1) {
-					this.x = 1;
-					this.y = 1;
-				}
-				while (this.pawnnumber == 2) {
-					this.x = 2;
-					this.y = 1;
-				}
-				while (this.pawnnumber == 3) {
-					this.x = 3;
-					this.y = 1;
-				}
-				while (this.pawnnumber == 4) {
-					this.x = 4;
-					this.y = 1;
-				}
-				while (this.pawnnumber == 5) {
-					this.x = 5;
-					this.y = 1;
-				}
-			}
-		}
+			for (let i = 1; i < 6; i++) {
+			const color = "red";
+			pawnnumber = i;
+			//y is always going to be 1 on the line
+			//x increments up. 
+			x = i;
+			y = 1;
+			let redPawns = [];
+			let redPawns[i] = new Pawn(x, y, color, pawnnumber);
+			return redPawns;
+		
+		};
+		
 	}, bluePawnGeneration() {
 		if (this.color == "blue") {
 				for (let i = 0; i <= 5; i++) {
