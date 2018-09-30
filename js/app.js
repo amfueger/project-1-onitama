@@ -122,8 +122,9 @@ class Game {
 		this.redHand = [];
 		this.blueHand = [];
 		this.sideCard = {};
-		this.whoseTurn = this.redPawns;
+		this.whoseTurn = "red";
 		this.chosenPawn = {};
+		console.log(this.redPawns);
 	}
 //solicit button click for color. Player one, which color would you rather be?
 //make pawns
@@ -134,8 +135,9 @@ class Game {
 	gamePlay() {
 // 		5. Pawn selected - click pawn on board OR click separate button
 
-clearClickables();
-setupTurn();
+this.gameSetup();
+this.clearClickables();
+this.setupTurn();
 
 // the jquery selector class we're listening for
 //put attributes on the first line of the red pawns
@@ -160,16 +162,21 @@ setupTurn();
 	}
 	gameSetup() {
 		//THIS WORKS
+
 		this.redPawns = this.generatePawns("red", 1);
 		this.bluePawns = this.generatePawns("blue", 5);
 		this.currentDeck = this.generateDeck(deck);
 		this.pushCardsintoHand(this.currentDeck);
+		game = new Game();
 	}
 	setupTurn(){
-		if (whoseTurn == this.redPawns) {
+		console.log(this.whoseTurn);
+		if (this.whoseTurn === "red") {
 			$('.red-pawn').addClass('clickable');
 			//add to x,y positions to start. 
-		} else if (whoseTurn == this.bluePawns) {
+			console.log("test");
+			console.log($('.red-pawn'));
+		} else if (this.whoseTurn === "blue") {
 			$('.blue-pawn').addClass('clickable')
 		} else {
 			return false;
