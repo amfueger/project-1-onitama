@@ -165,18 +165,22 @@ setupTurn();
 		this.currentDeck = this.generateDeck(deck);
 		this.pushCardsintoHand(this.currentDeck);
 	}
-	setupTurn(){
+	// setupTurn(){
 
-		$('')redPawns.addClass('clickable');
-		//using addclass becuase I don't want to override existing class
-		//put pawns down and make them clickable
-		//look at whoseTurn
-		//find the elements red-pawn and blue-pawn
+	// 	$('')redPawns.addClass('clickable');
+	// 	//using addclass becuase I don't want to override existing class
+	// 	//put pawns down and make them clickable
+	// 	//look at whoseTurn
+	// 	//find the elements red-pawn and blue-pawn
 
-	}
+	// }
 	clearClickables(){
 		//for removal of clickable class after turn.
-		$('.clickable').remove();
+		while($('.clickable')) {
+			console.log($('.clickable'));
+			$('.clickable').removeClass("clickable");
+			
+		}
 	}
 	senseiStone(pawnnumber){
 
@@ -233,4 +237,4 @@ game.gameSetup();
 /*****************Listeners************/
 
 
-$('#clickable').on('click', this.chosenPawn);
+//$('#clickable').on('click', this.chosenPawn);
