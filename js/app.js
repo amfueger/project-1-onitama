@@ -118,6 +118,11 @@ class Pawn{
 
 //Begin Game function
 class Game {
+	constructor() {
+		this.redHand = [];
+		this.blueHand = [];
+		this.sideCard = {};
+	}
 //solicit button click for color. Player one, which color would you rather be?
 //make pawns
 //pass in the coordinates for redmovementx and y on Blue's turn.
@@ -131,8 +136,7 @@ class Game {
 		this.redPawns = this.generatePawns("red", 1);
 		this.bluePawns = this.generatePawns("blue", 5);
 		this.currentDeck = this.generateDeck(deck);
-		// this.redDeck = this.pushCardsintoHand();
-		// this.blueDeck = this.pushCardsintoHand();
+		this.pushCardsintoHand(this.currentDeck);
 		// this.sideCArd = this. pushCardsintoHand();
 		//console.log(this.redPawns); <--- tests. pawns, the array is 0-4
 		//console.log(this.bluePawns); <--- tests. pawns, the array is 0-4
@@ -170,16 +174,23 @@ class Game {
 		let currentDeck = []; //five cards
 		for(let i = 0; i <= 4; i++) {
 			currentDeck[i] = fullDeck.splice(Math.floor(Math.random * fullDeck.length),1)[0]; //splice is returning the card inside of an array, a one element array, and running this multiple times, splice removes the card itself, so no multiple options. 
-			console.log(fullDeck);
-			console.log(currentDeck);
+			//console.log(fullDeck);
+			//console.log(currentDeck);
 		}
 			//console.log(currentDeck);
 
 			return currentDeck;
 	}
-	// pushCardsintoHand(gameDeck){
-	// 	while(gameDeck)
-	// }
+	pushCardsintoHand(currentDeck){
+		this.redHand.push(currentDeck[0]); //no pop because I need to keep track of all five of the cards together. 
+		this.redHand.push(currentDeck[1]);
+		this.blueHand.push(currentDeck[2]);
+		this.blueHand.push(currentDeck[3]);
+		this.sideCard = currentDeck[4];
+		// console.log(this.redHand);
+		// console.log(this.blueHand);
+		// console.log(this.sideCard);
+	}
 	switchCards(playerhand, ) {
 		//need a third variable to temporarily store the side card
 		//
