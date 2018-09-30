@@ -12,15 +12,15 @@ const deck = [{
 	redplayery: null,
 
 
-}, {
-	name: "Goose",
-	possiblemoves: {
-		[-1,1],
-		[-1,0],
-		[1,0],
-		[1,-1] }
-	redplayerx: null, 
-	redplayery: null,
+// }, {
+// 	name: "Goose",
+// 	possiblemoves: {
+// 		[-1,1],
+// 		[-1,0],
+// 		[1,0],
+// 		[1,-1] }
+// 	redplayerx: null, 
+// 	redplayery: null,
 }, {
 	name: "Elephant",
 	redmovement1x: -1,
@@ -68,12 +68,26 @@ We select redPlayerCard[0]
 redPlayerCard[0] asks for redPawn[0].x and assigns that value to redplayerx, and the same is true for y value. Check to make sure it is an integer!!
 redPawn[0].x = redPawn[0].x + card[1].redmovement1x
 redPawn[0].y = redPawn[0].y + card[1].redmovement1Y
-
-
-
-
-
 */
+class Deck {
+    // draw a random card
+    // deck has a property of cards
+    constructor(cards) {
+		this.cards = cards.slice();
+    }
+    drawCardAt(index) {
+    	return this.cards.splice(index, 1)[0]; 
+    }
+    drawRandom() {
+        let index = Math.floor(Math.random() * this.cards.length); 
+        return this.drawCardAt(index);
+        
+     }
+}	
+
+
+
+
 //Pawn class
 class Pawn{                                 
 	constructor(x, y, color, pawnnumber, live){
@@ -101,6 +115,10 @@ class Game {
 		//1. generate 5 pawns for each color
 		this.redPawns = this.generatePawns("red", 1);
 		this.bluePawns = this.generatePawns("blue", 5);
+		this.currentDeck = this.generateDeck();
+		this.redDeck = this.pushCardsintoHand();
+		this.blueDeck = this.pushCardsintoHand();
+		this.sideCArd = this. pushCardsintoHand();
 		//console.log(this.redPawns); <--- tests. pawns, the array is 0-4
 		//console.log(this.bluePawns); <--- tests. pawns, the array is 0-4
 
@@ -129,11 +147,20 @@ class Game {
 				};
 			return pawns;
 	}
-	generateDeck(){
+	generateDeck(deck){
+		let currentDeck = [];
+		for(let i = 0, i <= 5; i++) {
+			currentDeck = currentDeck.push(this.deck(Math.floor(Math.random());
 
+		}
+			return currentDeck;
 	}
-	switchCards {
-		//need a third variable to temporarily store the 
+	pushCardsintoHand(gameDeck){
+		while(gameDeck )
+	}
+	switchCards(playerhand, ) {
+		//need a third variable to temporarily store the side card
+		//
 	}
 
 }
