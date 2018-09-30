@@ -10,23 +10,17 @@ const deck = [{
 	redmovement3y: +1,
 	redplayerx: null,
 	redplayery: null,
-	blueplayerx: null,
-	blueplayery: null,
+
 
 }, {
 	name: "Goose",
-	redmovement1x: -1,
-	redmovement1y: +1,
-	redmovement2x: -1,
-	redmovement2y: +0,
-	redmovement3x: +1,
-	redmovement3y: +0,
-	redmovement4x: +1,
-	redmovement4y: -1,
-	redplayerx: null,
+	possiblemoves: {
+		[-1,1],
+		[-1,0],
+		[1,0],
+		[1,-1] }
+	redplayerx: null, 
 	redplayery: null,
-	blueplayerx: null,
-	blueplayery: null,
 }, {
 	name: "Elephant",
 	redmovement1x: -1,
@@ -107,8 +101,12 @@ class Game {
 		//1. generate 5 pawns for each color
 		this.redPawns = this.generatePawns("red", 1);
 		this.bluePawns = this.generatePawns("blue", 5);
+		//console.log(this.redPawns); <--- tests. pawns, the array is 0-4
+		//console.log(this.bluePawns); <--- tests. pawns, the array is 0-4
+
+
 		//2. pull 5 randomcards from deck object, assign to array
-		//fiveCardDeck(); //could be named something different
+		//fiveCardDeck(); 
 		//3. pull last two cards of array and store in red player hand array (pop())
 
 		//4. pull last two cards of array and store in blue player hand array pop()
@@ -130,6 +128,12 @@ class Game {
 					//pushing a new pawn to an array
 				};
 			return pawns;
+	}
+	generateDeck(){
+
+	}
+	switchCards {
+		//need a third variable to temporarily store the 
 	}
 
 }
