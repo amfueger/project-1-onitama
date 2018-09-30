@@ -122,14 +122,35 @@ class Game {
 		this.redHand = [];
 		this.blueHand = [];
 		this.sideCard = {};
+		this.whoseTurn = this.redPawns;
+		this.chosenPawn = {};
 	}
 //solicit button click for color. Player one, which color would you rather be?
 //make pawns
 //pass in the coordinates for redmovementx and y on Blue's turn.
 //Make sure arguments comes in as a number!!!! 
 //define the movement in the card for one of the pieces. When I write the moving piece, it checks to see if the pawn is blue, it multiplies the movement by -1
-
-
+	
+	gamePlay() {
+// 		5. Pawn selected - click pawn on board OR click separate button
+// the jquery selector class we're listening for
+//put attributes on the first line of the red pawns
+// 	1. Text prompt to select which of player's two cards to use
+// 		2. User clicks card they wish to use
+// 6. Card selected - card enlarges for user to see, but does not cover board
+// 	1. Card shows possible movements, black space indicating where pawn is identified on the board. 
+// 	2. Card itself allows for selection on the card to pick spot player can move to. 
+// 		1. Card is already connected to pawn selected and its location
+// 		2. Card knows from location of pawn its movement restrictions, uses a check system if the possible move is not within the array. So first check is if it's not [0-4,0-4], it's a no go. 
+// 		3. Second check if player pawn is already present, disallow move, text prompt that your pawn is already there
+// 	3. Once clicked, card moves back to position. 
+// 7. Pawn that was selected attempts to move to selected spot.  
+// 	1. If enemy pawn is there, set that enemy pawn's position to null and remove from board.
+// 		1. Print out pawn[0-4]enemy is removed from board!
+// 		2. Remove button or pawn.
+// 	2. If empty, change property position of pawn.
+// 	3. Pawn moves to new div. 
+	}
 	gameSetup() {
 		//what is game setup
 		//1. generate 5 pawns for each color
@@ -137,18 +158,7 @@ class Game {
 		this.bluePawns = this.generatePawns("blue", 5);
 		this.currentDeck = this.generateDeck(deck);
 		this.pushCardsintoHand(this.currentDeck);
-		// this.sideCArd = this. pushCardsintoHand();
-		//console.log(this.redPawns); <--- tests. pawns, the array is 0-4
-		//console.log(this.bluePawns); <--- tests. pawns, the array is 0-4
-
-
-		//2. pull 5 randomcards from deck object, assign to array
-		//fiveCardDeck(); 
-		//3. pull last two cards of array and store in red player hand array (pop())
-
-		//4. pull last two cards of array and store in blue player hand array pop()
-		//5. assign last card in deck array to variable sideCard
-
+		$('')redPawns.attr('class', 'clickable')
 	}
 	senseiStone(pawnnumber){
 
@@ -200,3 +210,9 @@ class Game {
 
 let game = new Game();
 game.gameSetup();
+
+
+/*****************Listeners************/
+
+
+$('#clickable').on('click', this.chosenPawn);
