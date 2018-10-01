@@ -2,108 +2,180 @@
 //moves for card start left to right. 
 const deck = [{
 	name: "Cobra",
-	redmovement1x: -1,
-	redmovement1y: +0,
-	redmovement2x: +1,
-	redmovement2y: -1,
-	redmovement3x: +1,
-	redmovement3y: +1,
+	[{
+		x: -1,
+		y: +0
+	},
+	{
+		x: +1,
+		y: -1
+	},
+	{
+		x: +1
+		y: +1
+	}],
 	img: 'card-images/cobra.jpg'
 }, {
 	name: "Goose",
-	redmovement1x: -1,
-	redmovement1y: +1,
-	redmovement2x: -1,
-	redmovement2y: +0,
-	redmovement3x: +1,
-	redmovement3y: +0,
-	redmovement4x: +1,
-	redmovement5x: -1,
+	[{
+		x: -1
+		y: +1
+	},
+	{ 
+		x: -1 
+		y: +0
+	},
+	{
+		x: +1
+		y: +0
+	},
+	{
+		x: +1
+		y: -1
+	}],
 	img: 'card-images/goose.jpg'
 }, {
 	name: "Elephant",
-	redmovement1x: -1,
-	redmovement1y: +1,
-	redmovement2x: -1,
-	redmovement2y: +0,
-	redmovement3x: +1,
-	redmovement3y: +1,
-	redmovement4x: +1,
-	redmovement4y: +0,
+	[{
+		x: -1
+		y: +1
+	},
+	{ 
+		x: -1
+		y: +0
+	},
+	{
+		x: +1
+		y: +1
+	},
+	{
+		x: +1
+		y: +0
+	}],
 	img: 'card-images/Elephant.jpg'
 }, {
 	name: "Frog",
-	redmovement1x: -2,
-	redmovement1y: +0,
-	redmovement2x: -1,
-	redmovement2y: +1,
-	redmovement3x: +1,
-	redmovement3y: -1,
+		[{
+		x: -2
+		y: +0
+	},
+	{ 
+		x: -1
+		y: +1
+	},
+	{
+		x: +1
+		y: -1
+	}],
 	img: 'card-images/Frog.jpg'
 }, { //done
 	name: "Mantis",
-	redmovement1x: -1,
-	redmovement1y: +1,
-	redmovement2x: +0,
-	redmovement2y: -1,
-	redmovement3x: +1,
-	redmovement3y: +1,
+	[{
+		x: -1
+		y: +1
+	},
+	{ 
+		x: +0
+		y: -1
+	},
+	{
+		x: +1
+		y: +1
+	}],
 	img: 'card-images/Mantis.jpg'
 }, {
 	name: "Boar",
-	redmovement1x: -1,
-	redmovement1y: +0,
-	redmovement2x: +0,
-	redmovement2y: +1,
-	redmovement3x: +0,
-	redmovement3y: +1,
+	[{
+		x: -1
+		y: +0
+	},
+	{ 
+		x: +0
+		y: +1
+	},
+	{
+		x: +0
+		y: +1
+	}],
 	img: 'card-images/Boar.jpg'
 }, {
 	name: "Rooster",
-	redmovement1x: -1,
-	redmovement1y: +0,
-	redmovement2x: -1,
-	redmovement2y: -1,
-	redmovement3x: +1,
-	redmovement3y: +1,
-	redmovement4x: +1,
-	redmovement4y: +0,
+	[{
+		x: -1
+		y: +0
+	},
+	{ 
+		x: -1
+		y: -1
+	},
+	{
+		x: +1
+		y: +1
+	},
+	{
+		x: +1
+		y: +0
+	}],
 	img: 'card-images/Rooster.jpg'
 }, {
 	name: "Crane",
-	redmovement1x: -1,
-	redmovement1y: -1,
-	redmovement2x: +0,
-	redmovement2y: +1,
-	redmovement3x: +1,
-	redmovement3y: -1,
+	[{
+		x: -1
+		y: -1
+	},
+	{ 
+		x: +0
+		y: +1
+	},
+	{
+		x: +1
+		y: -1
+	}],
 	img: 'card-images/Crane.jpg'
 }, {
 	name: "Horse",
-	redmovement1x: -1,
-	redmovement1y: +0,
-	redmovement2x: +0,
-	redmovement2y: +1,
-	redmovement3x: +0,
-	redmovement3y: -1,
+	[{
+		x: -1
+		y: +0
+	},
+	{ 
+		x: +0
+		y: +1
+	},
+	{
+		x: +0
+		y: -1
+	}],
 	img: 'card-images/Horse.jpg'
 }, {
 	name: "Tiger",
-	redmovement1x: +0,
-	redmovement1y: +2,
-	redmovement2x: +0,
-	redmovement2y: -1,
+	[{
+		x: +0
+		y: +2
+	},
+	{ 
+		x: +0
+		y: -1
+	}],
 	img: 'card-images/Tiger.jpg'
 }, {
 	name: "Dragon",
-	redmovement1x: -2,
-	redmovement1y: +1,
-	redmovement2x: -1,
-	redmovement2y: -1,
-	redmovement3x: +2,
-	redmovement3y: +1,
-	redmovement4x: +1,
-	redmovement4y: -1,
+	[{
+		x: -2
+		y: +1
+	},
+	{ 
+		x: -1
+		y: -1
+	},
+	{
+		x: +2
+		y: +1
+	},
+	{
+		x: +1
+		y: -1
+	}],
 	img: 'card-images/Dragon.jpg'
 }, {
 	name: "Rabbit",
@@ -125,32 +197,52 @@ const deck = [{
 	img: 'card-images/Ox.jpg'
 }, {
 	name: "Crab",
-	redmovement1x: -2,
-	redmovement1y: +0,
-	redmovement2x: +0,
-	redmovement2y: +1,
-	redmovement3x: +2,
-	redmovement3y: +0,
+	[{
+		x: -2
+		y: +0
+	},
+	{ 
+		x: +0
+		y: +1
+	},
+	{
+		x: +2
+		y: +0
+	}],
 	img: 'card-images/Crab.jpg'
 }, {
 	name: "Monkey",
-	redmovement1x: -1,
-	redmovement1y: +1,
-	redmovement2x: -1,
-	redmovement2y: -1,
-	redmovement3x: +1,
-	redmovement3y: +1,
-	redmovement4x: +1,
-	redmovement5x: -1,
+	[{
+		x: -1
+		y: +1
+	},
+	{ 
+		x: -1
+		y: -1
+	},
+	{
+		x: +1
+		y: +1
+	},
+	{
+		x: +1
+		y: -1
+	}],
 	img: 'card-images/Monkey.jpg'
 }, {
 	name: "Eel",
-	redmovement1x: -1,
-	redmovement1y: +1,
-	redmovement2x: -1,
-	redmovement2y: -1,
-	redmovement3x: +1,
-	redmovement3y: +0,
+	[{
+		x: -1
+		y: +1
+	},
+	{ 
+		x: -1
+		y: -1
+	},
+	{
+		x: +1
+		y: +0
+	}],
 	img: 'card-images/Eel.jpg'
 }, ]
 //Pawn 1's x coordinate = Pawn 1's x coordinate + card property movement 1's x #. 
@@ -207,8 +299,7 @@ class Game {
 		this.chosenPawn = {};
 		this.clickedPawnX = null;
 		this.clickedPawnY = null;
-		this.clickedCard = null;
-		this.cardClickedIndex = 0;
+		this.cardClicked = "";
 		//console.log(this.redPawns);
 		this.currentDeck = [];
 	}
@@ -284,6 +375,7 @@ class Game {
 		//we have our pawn clicked
 		//we have our card clicked, presumably
 		clearPawnClickables();
+		$('.red-pawn').addClass('clickable');
 		if(whoseTurn === "red"){
 			//get the card itself
 			//having trouble moving from on.click to card on.click
@@ -346,9 +438,16 @@ class Game {
 
 		$('#redcard1').attr('src', this.redHand[0].img);
 		$('#redcard2').attr('src', this.redHand[1].img);
+		$('#redcard1').attr('id', this.redHand[1].name);
+		$('#redcard2').attr('id', this.redHand[1].name);
 
 		$('#bluecard1').attr('src', this.blueHand[0].img);
 		$('#bluecard2').attr('src', this.blueHand[1].img);
+		$('#bluecard1').attr('id', this.blueHand[0].name);
+		$('#bluecard2').attr('id', this.blueHand[1].name);
+
+		$('#side-card').attr('src', this.sideCard.img)
+
 		// console.log(this.redHand);
 		// console.log(this.blueHand);
 		// console.log(this.sideCard);
@@ -367,8 +466,25 @@ class Game {
 		//console.log(this.whoseTurn);
 	}
 	chooseMove() {
+		clearPawnClickables();
+		//important because we need to use clickables to assign that class to the squares that are NOW clickable
+		cardClicked.addClass('clickable');
+		let currentMoveX = 0;
+		let currentMoveY = 0;
+
 		if(this.whoseTurn === "red") {
-			redHand.[clickedCard]
+			for(let i = 0; i < cardClicked.length; i++){
+				this.cardClicked.  []
+			}
+			
+
+		//allow for only squares to work that are pawn position + cardClicked.movements position 
+	} else {
+
+	}
+
+		let currentMoveX = $('.square').attr('data-x')
+		let currentMoveY = $('.square').attr('data-y')
 	}
 }
 let game = new Game();
@@ -381,15 +497,16 @@ $('.clickable').on('click', (e) => {
 
 	game.clickedPawnX = $(e.target).parent().attr('data-x');
 	game.clickedPawnY = $(e.target).parent().attr('data-y');
+
 	
 	console.log(game);
 	//console.log($(e.target).parent());
 	//state that you have selected a pawn, now select a card!
 });
-$('.card-clickable').on('click', (e) => {
-	console.log("is this card clickable firing");
-	game.cardClickedIndex = $(e.currentTarget).attr('data-card');
-});
+// $('.card-clickable').on('click', (e) => {
+// 	console.log("is this card clickable firing");
+// 	game.cardClickedIndex = $(e.currentTarget).attr('data-card');
+// });
 
 
 
@@ -400,25 +517,36 @@ $('.cards').on('click', (e) => {
 	console.log(e.currentTarget);
 	console.log(e.target)
 
+	// get the class of e.currentTarget
+
 	// if a red card was clicked
-	if(e.currentTarget === $('red-cards')) {
+	if(e.currentTarget === '.red-cards') { // just compare to the string
+										 	// because you can't compare objects
 		// if it's red's turn
-		if(game.whoseTurn === "red") {
-			game.clickedCard = e.currentTarget.attr('data-card');
+		if(game.whoseTurn.String() === "red") {
+			game.clickedCard = $('.red-cards').attr('id');
 			// allow player to choose move - method
-			game.chooseMove(game.clickedCard);
+			console.log(game.clickedCard);
+
+			//game.chooseMove(game.clickedCard);
 		}
-	} else {
+	} else { console.log("hey");
 		// else (if blue was clicked)
-		// if it's blue's turn
-		if(game.whoseTurn === "blue") {
-			game.clickedCard = e.currentTarget.attr('data-card');
+		if(game.whoseTurn.String() === "blue") {
+			game.clickedCard = $('.blue-cards').attr('id');
 			// allow player to choose move - method
-			game.chooseMove(game.clickedCard);
+			console.log(game.clickedCard);
+			//game.chooseMove(game.clickedCard);
 		}
 
 	}
-		
+	return game.clickedCard;
+	console.log(game.cardClicked);
+
+
+
+
 })
+console.log(game.clickedCard);
 
 
