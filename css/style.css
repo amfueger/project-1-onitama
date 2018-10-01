@@ -23,9 +23,12 @@
 	height: 118px;
 	border: 1px solid black;
 	float: left;
-
 }
-img {
+.red-pawn, .blue-pawn {
 	height: 80px;
 	width: 80px;
+}
+#redcard1, #redcard2, #bluecard1, #bluecard2 {
+	height: 200px;
+	width: 350px;
 }

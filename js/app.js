@@ -266,6 +266,7 @@ class Game {
 		} else if (this.whoseTurn === "blue") {
 			$('.blue-pawn').addClass('clickable');
 			$('.blue-cards').addClass('card-clickable');
+			console.log($('blue-cards'));
 		} else {
 			return false;
 		}
@@ -275,6 +276,8 @@ class Game {
 		//find the elements red-pawn and blue-pawn
 	}
 	singleMove() {
+		//we have our pawn clicked
+		//we have our card clicked, presumably
 		clearPawnClickables();
 		if(whoseTurn === "red"){
 			//get the card itself
@@ -332,6 +335,12 @@ class Game {
 		this.blueHand.push(currentDeck[2]);
 		this.blueHand.push(currentDeck[3]);
 		this.sideCard = currentDeck[4];
+
+		$('#redcard1').attr('src', this.redHand[0].img);
+		$('#redcard2').attr('src', this.redHand[1].img);
+
+		$('#bluecard1').attr('src', this.blueHand[0].img);
+		$('#bluecard2').attr('src', this.blueHand[1].img);
 		// console.log(this.redHand);
 		// console.log(this.blueHand);
 		// console.log(this.sideCard);
@@ -363,5 +372,6 @@ $('.clickable').on('click', function(e) {
 	//console.log($(e.target).parent());
 });
 $('.card-clickable').on('click', function(e) {
+	console.log("is this card clickable firing");
 	this.cardClickedIndex = $(e.target).parent().attr('data-card');
 });
