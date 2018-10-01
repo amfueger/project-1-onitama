@@ -203,10 +203,11 @@ class Game {
 		this.blueHand = [];
 		this.sideCard = {};
 		this.selectedCard = {}; //this is to hold the player's selected card after pawn select
-		this.whoseTurn = "red";
+		this.whoseTurn = "red"; //true for red?
 		this.chosenPawn = {};
 		this.clickedPawnX = null;
 		this.clickedPawnY = null;
+		this.clickedCard = null;
 		this.cardClickedIndex = 0;
 		//console.log(this.redPawns);
 		this.currentDeck = [];
@@ -282,7 +283,6 @@ class Game {
 	singleMove() {
 		//we have our pawn clicked
 		//we have our card clicked, presumably
-		$('.clickable').off('click');
 		clearPawnClickables();
 		if(whoseTurn === "red"){
 			//get the card itself
@@ -330,7 +330,6 @@ class Game {
 		 //five cards
 		for (let i = 0; i <= 4; i++) {
 			this.currentDeck.push(fullDeck.splice(Math.floor(Math.random() * fullDeck.length), 1)[0]); 
-			//splice is returning the card inside of an array, a one element array, and running this multiple times, splice removes the card itself, so no multiple options. 
 			//console.log(fullDeck);
 			//console.log(currentDeck);
 		}
@@ -367,6 +366,10 @@ class Game {
 		}
 		//console.log(this.whoseTurn);
 	}
+	chooseMove() {
+		if(this.whoseTurn === "red") {
+			redHand.[clickedCard]
+	}
 }
 let game = new Game();
 game.gameSetup();
@@ -381,21 +384,41 @@ $('.clickable').on('click', (e) => {
 	
 	console.log(game);
 	//console.log($(e.target).parent());
+	//state that you have selected a pawn, now select a card!
 });
 $('.card-clickable').on('click', (e) => {
 	console.log("is this card clickable firing");
-	game.cardClickedIndex = $(e.target).parent().attr('data-card');
+	game.cardClickedIndex = $(e.currentTarget).attr('data-card');
 });
 
 
 
 
-$('.cards').on('click', (event) => {
-	console.log(event);
-
-	// logic
+$('.cards').on('click', (e) => {
 
 
+	console.log(e.currentTarget);
+	console.log(e.target)
 
+	// if a red card was clicked
+	if(e.currentTarget === $('red-cards')) {
+		// if it's red's turn
+		if(game.whoseTurn === "red") {
+			game.clickedCard = e.currentTarget.attr('data-card');
+			// allow player to choose move - method
+			game.chooseMove(game.clickedCard);
+		}
+	} else {
+		// else (if blue was clicked)
+		// if it's blue's turn
+		if(game.whoseTurn === "blue") {
+			game.clickedCard = e.currentTarget.attr('data-card');
+			// allow player to choose move - method
+			game.chooseMove(game.clickedCard);
+		}
 
+	}
+		
 })
+
+

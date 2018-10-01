@@ -4,6 +4,7 @@
 
 #game-board {
 	border: 1px solid black;
+	text-align: center;
 
 }
 .blue-cards {
@@ -31,4 +32,7 @@
 #redcard1, #redcard2, #bluecard1, #bluecard2 {
 	height: 200px;
 	width: 350px;
+}
+.outside-board {
+	border: 1px solid black;
 }
