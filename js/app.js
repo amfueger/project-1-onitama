@@ -208,8 +208,8 @@ class Game {
 		this.clickedPawnX = null;
 		this.clickedPawnY = null;
 		this.cardClickedIndex = 0;
-		this.currentDeck = [];
 		//console.log(this.redPawns);
+		this.currentDeck = [];
 	}
 	//pass in the coordinates for redmovementx and y on Blue's turn.
 	//Make sure arguments comes in as a number!!!! 
@@ -325,16 +325,17 @@ class Game {
 	generateDeck() {
 		//had const deck, made a full copy, then use random to pull 5 cards out it with *
 		let fullDeck = [];
-		fullDeck = this.deck.slice(0); //fullDeck means 16 deck copy
+		fullDeck = deck.slice(0); //fullDeck means 16 deck copy
 		//console.log(fullDeck);
 		 //five cards
 		for (let i = 0; i <= 4; i++) {
-			currentDeck[i] = fullDeck.splice(Math.floor(Math.random * fullDeck.length), 1)[0]; //splice is returning the card inside of an array, a one element array, and running this multiple times, splice removes the card itself, so no multiple options. 
+			this.currentDeck.push(fullDeck.splice(Math.floor(Math.random() * fullDeck.length), 1)[0]); 
+			//splice is returning the card inside of an array, a one element array, and running this multiple times, splice removes the card itself, so no multiple options. 
 			//console.log(fullDeck);
 			//console.log(currentDeck);
 		}
 		//console.log(currentDeck);
-		return currentDeck;
+		return this.currentDeck;
 	}
 	pushCardsintoHand(currentDeck) {
 		//no pop because I need to keep track of all five of the cards together. 
