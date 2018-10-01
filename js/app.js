@@ -2,7 +2,7 @@
 //moves for card start left to right. 
 const deck = [{
 	name: "Cobra",
-	[{
+	moves: [{
 		x: -1,
 		y: +0
 	},
@@ -11,257 +11,253 @@ const deck = [{
 		y: -1
 	},
 	{
-		x: +1
+		x: +1,
 		y: +1
 	}],
 	img: 'card-images/cobra.jpg'
 }, {
 	name: "Goose",
-	[{
-		x: -1
+	moves: [{
+		x: -1,
 		y: +1
 	},
 	{ 
-		x: -1 
+		x: -1,
 		y: +0
 	},
 	{
-		x: +1
+		x: +1,
 		y: +0
 	},
 	{
-		x: +1
+		x: +1,
 		y: -1
 	}],
 	img: 'card-images/goose.jpg'
 }, {
 	name: "Elephant",
-	[{
-		x: -1
+	moves: [{
+		x: -1,
 		y: +1
 	},
 	{ 
-		x: -1
+		x: -1,
 		y: +0
 	},
 	{
-		x: +1
+		x: +1,
 		y: +1
 	},
 	{
-		x: +1
+		x: +1,
 		y: +0
 	}],
 	img: 'card-images/Elephant.jpg'
 }, {
 	name: "Frog",
-		[{
-		x: -2
+	moves: [{
+		x: -2,
 		y: +0
 	},
 	{ 
-		x: -1
+		x: -1,
 		y: +1
 	},
 	{
-		x: +1
+		x: +1,
 		y: -1
 	}],
 	img: 'card-images/Frog.jpg'
 }, { //done
 	name: "Mantis",
-	[{
-		x: -1
+	moves: [{
+		x: -1,
 		y: +1
 	},
 	{ 
-		x: +0
+		x: +0,
 		y: -1
 	},
 	{
-		x: +1
+		x: +1,
 		y: +1
 	}],
 	img: 'card-images/Mantis.jpg'
 }, {
 	name: "Boar",
-	[{
-		x: -1
+	moves: [{
+		x: -1,
 		y: +0
 	},
 	{ 
-		x: +0
+		x: +0,
 		y: +1
 	},
 	{
-		x: +0
+		x: +0,
 		y: +1
 	}],
 	img: 'card-images/Boar.jpg'
 }, {
 	name: "Rooster",
-	[{
-		x: -1
+	moves: [{
+		x: -1,
 		y: +0
 	},
 	{ 
-		x: -1
+		x: -1,
 		y: -1
 	},
 	{
-		x: +1
+		x: +1,
 		y: +1
 	},
 	{
-		x: +1
+		x: +1,
 		y: +0
 	}],
 	img: 'card-images/Rooster.jpg'
 }, {
 	name: "Crane",
-	[{
-		x: -1
+	moves: [{
+		x: -1,
 		y: -1
 	},
 	{ 
-		x: +0
+		x: +0,
 		y: +1
 	},
 	{
-		x: +1
+		x: +1,
 		y: -1
 	}],
 	img: 'card-images/Crane.jpg'
 }, {
 	name: "Horse",
-	[{
-		x: -1
+	moves: [{
+		x: -1,
 		y: +0
 	},
 	{ 
-		x: +0
+		x: +0,
 		y: +1
 	},
 	{
-		x: +0
+		x: +0,
 		y: -1
 	}],
 	img: 'card-images/Horse.jpg'
 }, {
 	name: "Tiger",
-	[{
-		x: +0
+	moves: [{
+		x: +0,
 		y: +2
 	},
 	{ 
-		x: +0
+		x: +0,
 		y: -1
 	}],
 	img: 'card-images/Tiger.jpg'
 }, {
 	name: "Dragon",
-	[{
-		x: -2
+	moves: [{
+		x: -2,
 		y: +1
 	},
 	{ 
-		x: -1
+		x: -1,
 		y: -1
 	},
 	{
-		x: +2
+		x: +2,
 		y: +1
 	},
 	{
-		x: +1
+		x: +1,
 		y: -1
 	}],
 	img: 'card-images/Dragon.jpg'
 }, {
 	name: "Rabbit",
-	redmovement1x: -1,
-	redmovement1y: -1,
-	redmovement2x: +1,
-	redmovement2y: +1,
-	redmovement3x: +2,
-	redmovement3y: +0,
-	img: 'card-images/Rabbit.jpg'
-}, {
-	name: "Ox",
-	redmovement1x: +0,
-	redmovement1y: +1,
-	redmovement2x: +0,
-	redmovement2y: -1,
-	redmovement3x: +1,
-	redmovement3y: +0,
-	img: 'card-images/Ox.jpg'
-}, {
-	name: "Crab",
-	[{
-		x: -2
-		y: +0
+	moves: [{
+		x: -1,
+		y: -1
 	},
 	{ 
-		x: +0
+		x: +1,
 		y: +1
 	},
 	{
-		x: +2
+		x: +2,
+		y: +0
+	}],
+	img: 'card-images/Rabbit.jpg'
+}, {
+	name: "Ox",
+	moves: [{
+		x: +0,
+		y: +1
+	},
+	{ 
+		x: +0,
+		y: -1
+	},
+	{
+		x: +1,
+		y: +0
+	}],
+	img: 'card-images/Ox.jpg'
+}, {
+	name: "Crab",
+	moves: [{
+		x: -2,
+		y: +0
+	},
+	{ 
+		x: +0,
+		y: +1
+	},
+	{
+		x: +2,
 		y: +0
 	}],
 	img: 'card-images/Crab.jpg'
 }, {
 	name: "Monkey",
-	[{
-		x: -1
+	moves: [{
+		x: -1,
 		y: +1
 	},
 	{ 
-		x: -1
+		x: -1,
 		y: -1
 	},
 	{
-		x: +1
+		x: +1,
 		y: +1
 	},
 	{
-		x: +1
+		x: +1,
 		y: -1
 	}],
 	img: 'card-images/Monkey.jpg'
 }, {
 	name: "Eel",
-	[{
-		x: -1
+	moves: [{
+		x: -1,
 		y: +1
 	},
 	{ 
-		x: -1
+		x: -1,
 		y: -1
 	},
 	{
-		x: +1
+		x: +1,
 		y: +0
 	}],
 	img: 'card-images/Eel.jpg'
-}, ]
-//Pawn 1's x coordinate = Pawn 1's x coordinate + card property movement 1's x #. 
-//redPawn[0].x = redPawn[0].x + card[1].redmovement1x
-//redPawn[0].y = redPawn[0].y + card[1].redmovement1Y
-//make sure these stay integers
-//run check on pawn's x and y coordinates after, then if pawns x,y matches square's x,y, move it. 
-//Pawn gets it's coordinates from 
-//redPawn[0].x = $('#id-of-square').data(x); and 
-//redPawn[0].y = $('#id-of-square')data(y);
-//on.('click' will pull id.
-/*
+}]
 
-Let's say redPawn[0].x = 1 and redPawn[0].y = 1
-We select redPlayerCard[0]
-redPlayerCard[0] asks for redPawn[0].x and assigns that value to redplayerx, and the same is true for y value. Check to make sure it is an integer!!
-redPawn[0].x = redPawn[0].x + card[1].redmovement1x
-redPawn[0].y = redPawn[0].y + card[1].redmovement1Y
-*/
 class Deck {
 	// draw a random card
 	// deck has a property of cards
@@ -295,7 +291,7 @@ class Game {
 		this.blueHand = [];
 		this.sideCard = {};
 		this.selectedCard = {}; //this is to hold the player's selected card after pawn select
-		this.whoseTurn = "red"; //true for red?
+		this.whoseTurn = "blue"; //true for red?
 		this.chosenPawn = {};
 		this.clickedPawnX = null;
 		this.clickedPawnY = null;
@@ -428,6 +424,7 @@ class Game {
 		//console.log(currentDeck);
 		return this.currentDeck;
 	}
+
 	pushCardsintoHand(currentDeck) {
 		//no pop because I need to keep track of all five of the cards together. 
 		this.redHand.push(currentDeck[0]); 
@@ -436,21 +433,21 @@ class Game {
 		this.blueHand.push(currentDeck[3]);
 		this.sideCard = currentDeck[4];
 
+		// flips them over to be visible
 		$('#redcard1').attr('src', this.redHand[0].img);
 		$('#redcard2').attr('src', this.redHand[1].img);
-		$('#redcard1').attr('id', this.redHand[1].name);
-		$('#redcard2').attr('id', this.redHand[1].name);
 
+
+		// flip blue cards to be visible
 		$('#bluecard1').attr('src', this.blueHand[0].img);
 		$('#bluecard2').attr('src', this.blueHand[1].img);
-		$('#bluecard1').attr('id', this.blueHand[0].name);
-		$('#bluecard2').attr('id', this.blueHand[1].name);
 
-		$('#side-card').attr('src', this.sideCard.img)
 
-		// console.log(this.redHand);
-		// console.log(this.blueHand);
-		// console.log(this.sideCard);
+		$('#side-card').attr('src', this.sideCard.img);
+
+		console.log(this.redHand);
+		console.log(this.blueHand);
+		console.log(this.sideCard);
 	}
 	switchCards(playerhand) {
 		//need a third variable to temporarily store the side card
@@ -466,22 +463,35 @@ class Game {
 		//console.log(this.whoseTurn);
 	}
 	chooseMove() {
-		clearPawnClickables();
-		//important because we need to use clickables to assign that class to the squares that are NOW clickable
-		cardClicked.addClass('clickable');
+		// makes clicking a square do something
+		//
+
+
 		let currentMoveX = 0;
 		let currentMoveY = 0;
 
 		if(this.whoseTurn === "red") {
-			for(let i = 0; i < cardClicked.length; i++){
-				this.cardClicked.  []
+			for(let i = 0; i < this.cardClicked.moves[length]; i++){
+				let singleMoveY = this.cardClicked.moves[i].y + currentMoveY;
+				let singleMoveX = this.cardClicked.moves[i].x + currentMoveX;
+				if (
+					singleMoveX == $('.square').val('data-x') && 
+					singleMoveX == $('.square').val('data-y')
+					) {
+					clearPawnClickables();
+					$('.square').addClass('.clickable')
+				}
+				//Check singleMove against any div tag with data-x, data-y
+				//if it doesn't match any, don't assign
+				//if it does match, assign the square with the matchin x and y a clickable class. 
+					this.currentPawn.x = this.singleMoveX;
+					this.currentPawn.y = this.singleMoveY;
 			}
-			
+			$('.square').addClass('clickable');
 
-		//allow for only squares to work that are pawn position + cardClicked.movements position 
-	} else {
+		} else {
 
-	}
+		}
 
 		let currentMoveX = $('.square').attr('data-x')
 		let currentMoveY = $('.square').attr('data-y')
@@ -491,17 +501,11 @@ let game = new Game();
 game.gameSetup();
 /*****************Listeners************/
 //NOT ABLE TO GET TO PARENT
-// pawns
 $('.clickable').on('click', (e) => {
-	//console.log(e.target);
-
 	game.clickedPawnX = $(e.target).parent().attr('data-x');
 	game.clickedPawnY = $(e.target).parent().attr('data-y');
-
+	game.currentPawn = $(e.target).parent().addClass('current-pawn');
 	
-	console.log(game);
-	//console.log($(e.target).parent());
-	//state that you have selected a pawn, now select a card!
 });
 // $('.card-clickable').on('click', (e) => {
 // 	console.log("is this card clickable firing");
@@ -513,34 +517,45 @@ $('.clickable').on('click', (e) => {
 
 $('.cards').on('click', (e) => {
 
-
-	console.log(e.currentTarget);
+	console.log(e)
 	console.log(e.target)
+	// get the card that was clicked
+	// game.clickedCard = $('.cards')
+	// e.currtenttarget is the dive you are listening on
+	let itsRed = $(e.currentTarget).hasClass('red-cards');
+	// you need to know if red-cards in the class list of that div
+	// let itsRed = 
+	console.log(itsRed + " its' a red card");
 
-	// get the class of e.currentTarget
+	if(itsRed) { console.log("red card was clicked")
 
-	// if a red card was clicked
-	if(e.currentTarget === '.red-cards') { // just compare to the string
-										 	// because you can't compare objects
 		// if it's red's turn
-		if(game.whoseTurn.String() === "red") {
-			game.clickedCard = $('.red-cards').attr('id');
-			// allow player to choose move - method
-			console.log(game.clickedCard);
+		if(game.whoseTurn === "red") { 
+			// game.clickedCard = $('.red-cards').data('card');
+			// // allow player to choose move - method
+			// console.log(game.clickedCard);
+			// console.log(this.clickedCard.data('card'))
+			console.log("red card was clicked and that's ok because it's reds turn")
+			// make boolean true: amIexpectingAClickOnASquare
 
-			//game.chooseMove(game.clickedCard);
 		}
-	} else { console.log("hey");
-		// else (if blue was clicked)
-		if(game.whoseTurn.String() === "blue") {
-			game.clickedCard = $('.blue-cards').attr('id');
+	} else { console.log("blue card was clicked");
+	// else (if blue was clicked)
+
+		if(game.whoseTurn.toString() === "blue") {
+			// game.clickedCard = $('.blue-cards').data('card');
+			//add clickable class in here? 
+			//important because we need to use clickables to assign that class to the squares that are NOW clickable
+			// cardClicked.addClass('clickable-moves');
 			// allow player to choose move - method
-			console.log(game.clickedCard);
+			// console.log(game.clickedCard);
+			// console.log(this.clickedCard.data('card'))
 			//game.chooseMove(game.clickedCard);
+			console.log("blue card was clicked and that's ok because it's blue's turn")
 		}
 
 	}
-	return game.clickedCard;
+	// return game.clickedCard;
 	console.log(game.cardClicked);
 
 
@@ -548,5 +563,7 @@ $('.cards').on('click', (e) => {
 
 })
 console.log(game.clickedCard);
+
+
 
 

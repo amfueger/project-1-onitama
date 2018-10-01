@@ -29,7 +29,7 @@
 	height: 80px;
 	width: 80px;
 }
-.red-card-position, .blue-card-position {
+.red-card-position, .blue-card-position, #side-card {
 	height: 200px;
 	width: 350px;
 }
