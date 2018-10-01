@@ -124,6 +124,8 @@ class Game {
 		this.sideCard = {};
 		this.whoseTurn = "red";
 		this.chosenPawn = {};
+		this.clickedPawnX =  null;
+		this.clickedPawnY = null;
 		//console.log(this.redPawns);
 	}
 
@@ -141,7 +143,12 @@ this.clearClickables();
 this.setupTurn();
 
 
+
 //time needed: 
+//listen for the click
+	//change the cursor for hovering over a clickable event 
+	//
+//pick the card
 //couple hours for available move?
 //another hour or so for card swapping?
 //victory conditions hour?
@@ -163,7 +170,7 @@ this.setupTurn();
 // 		2. Remove button or pawn.
 // 	2. If empty, change property position of pawn.
 // 	3. Pawn moves to new div. 
-this.switchToOtherPlayer(game.whoseTurn);
+this.switchToOtherPlayer();
 	}
 	gameSetup() {
 		//THIS WORKS
@@ -240,13 +247,15 @@ this.switchToOtherPlayer(game.whoseTurn);
 		//need a third variable to temporarily store the side card
 		//
 	}
-	switchToOtherPlayer(whoseTurn) {
-		if(whoseTurn === "red") {
-			whoseTurn = "blue";
-		} else if (whoseTurn === "blue") {
-			whoseTurn = "red";
+	switchToOtherPlayer() {
+		if(this.whoseTurn === "red") {
+			this.whoseTurn = "blue";
+			//console.log(this.whoseTurn);
+		} else if (this.whoseTurn === "blue") {
+			this.whoseTurn = "red";
 		}
-	}
+		//console.log(this.whoseTurn);
+	} 
 
 }
 
@@ -257,4 +266,11 @@ game.gameSetup();
 /*****************Listeners************/
 
 
-//$('#clickable').on('click', this.chosenPawn);
+$('.clickable').on('click', function(e) {
+	console.log(e);
+	this.clickedPawnX = e.square.data('data-x');
+	this.clickedPawnY = e.square.data('data-y');
+	console.log(this.clickedPawnX);
+}
+
+

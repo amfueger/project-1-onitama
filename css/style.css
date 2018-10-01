@@ -1,0 +1,26 @@
+.clickable {
+	cursor: pointer;
+}
+
+#game-board {
+	border: 1px solid black;
+}
+.blue-cards {
+	border: 1px solid black;
+}
+.red-cards {
+	border: 1px solid black;
+	margin: 20px;
+}
+.square-limit {
+	border: 1px solid black;
+	width: 620px;
+	height: 620px;
+}
+.square {
+	width: 118px;
+	height: 118px;
+	border: 1px solid black;
+	display: inline-flex;
+
+}

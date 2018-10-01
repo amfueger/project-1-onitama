@@ -6,63 +6,66 @@
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
-	<div class="game-board">
+	<div id="game-board">
+		<p>Full board, including squares and cards</p>
 		<div class="blue-cards">
+			<p>Blue card spot</p>
 			<img id="bluecard1" class = "blue-card-position" data-card="0"src=""/>
 			<img id="bluecard2" class = "blue-card-position" data-card="1" src=""/>	
 		</div>
 			<div class="square-limit">
-				<div class="column1 row5" data-number="1" data-x="1" data-y="5">
+				<div class="square" data-number="1" data-x="1" data-y="5">
 					<img id="blue-pawn-5" class="blue-pawn clickable" src=""/>
 				</div>
-				<div class="column1 row4" data-number="6" data-x="1" data-y="4"></div>
-				<div class="column1 row3" data-number="11" data-x="1" data-y="3"></div>
-				<div class="column1" class="row2" data-number="16" data-x="1" data-y="2"></div>
-				<div class="column1" class="row1" data-number="21" data-x="1" data-y="1">
+				<div class="square" data-number="6" data-x="1" data-y="4"></div>
+				<div class="square" data-number="11" data-x="1" data-y="3"></div>
+				<div class="square" data-number="16" data-x="1" data-y="2"></div>
+				<div class="square" data-number="21" data-x="1" data-y="1">
 					<img id="red-pawn-1" class="red-pawn" src=""/>
 				</div>
 
-				<div class="column2" class="row5" data-number="2" data-x="2" data-y="5">
+				<div class="square" data-number="2" data-x="2" data-y="5">
 					<img id="blue-pawn-4"class="blue-pawn clickable"src=""/>
 				</div>
-				<div class="column2" class="row4" data-number="7" data-x="2" data-y="4"></div>
-				<div class="column2" class="row3" data-number="12" data-x="2" data-y="3"></div>
-				<div class="column2" class="row2" data-number="17" data-x="2" data-y="2"></div>
-				<div class="column2" class="row1" data-number="22" data-x="2" data-y="1">
+				<div class="square" data-number="7" data-x="2" data-y="4"></div>
+				<div class="square" data-number="12" data-x="2" data-y="3"></div>
+				<div class="square" data-number="17" data-x="2" data-y="2"></div>
+				<div class="square" data-number="22" data-x="2" data-y="1">
 					<img id="red-pawn-2" class="red-pawn" src=""/>
 				</div>
 
-				<div class="column3" class="row5" data-number="3" data-x="3" data-y="5">
+				<div class="square" data-number="3" data-x="3" data-y="5">
 					<img id="blue-sensei-3" class="blue-pawn"src=""/>
 				</div>
-				<div class="column3" class="row4" data-number="8" data-x="3" data-y="4"></div>
-				<div class="column3" class="row3" data-number="13" data-x="3" data-y="3"></div>
-				<div class="column3" class="row2" data-number="18" data-x="3" data-y="2"></div>
-				<div class="column3" class="row1" data-number="23" data-x="3" data-y="1">
+				<div class="square" data-number="8" data-x="3" data-y="4"></div>
+				<div class="square" data-number="13" data-x="3" data-y="3"></div>
+				<div class="square" data-number="18" data-x="3" data-y="2"></div>
+				<div class="square" data-number="23" data-x="3" data-y="1">
 					<img id="red-sensei-3" class="red-pawn" src=""/>
 				</div>
 
-				<div class="column4" class="row5" data-number="4" data-x="4" data-y="5">
+				<div class="square" data-number="4" data-x="4" data-y="5">
 					<img id="blue-pawn-2" class="blue-pawn clickable" src=""/>
 				</div>
-				<div class="column4" class="row4" data-number="9" data-x="4" data-y="4"></div>
-				<div class="column4" class="row3" data-number="14" data-x="4" data-y="3"></div>
-				<div class="column4" class="row2" data-number="19" data-x="4" data-y="2"></div>
-				<div class="column4" class="row1" data-number="24" data-x="4" data-y="1">
+				<div class="square" data-number="9" data-x="4" data-y="4"></div>
+				<div class="square" data-number="14" data-x="4" data-y="3"></div>
+				<div class="square" data-number="19" data-x="4" data-y="2"></div>
+				<div class="square" data-number="24" data-x="4" data-y="1">
 					<img id="red-pawn-4" class="red-pawn" src=""/>
 				</div>
 
-				<div class="column5" class="row5" data-number="5" data-x="5" data-y="5">
+				<div class="square" data-number="5" data-x="5" data-y="5">
 					<img id="blue-pawn-1" class="blue-pawn" src=""/>
 				</div>
-				<div class="column5" class="row4" data-number="10" data-x="5" data-y="4"></div>
-				<div class="column5" class="row3" data-number="15" data-x="5" data-y="3"></div>
-				<div class="column5" class="row2" data-number="20" data-x="5" data-y="2"></div>
-				<div class="column5" class="row1" data-number="25" data-x="5" data-y="1">
+				<div class="square" data-number="10" data-x="5" data-y="4"></div>
+				<div class="square" data-number="15" data-x="5" data-y="3"></div>
+				<div class="square" data-number="20" data-x="5" data-y="2"></div>
+				<div class="square" data-number="25" data-x="5" data-y="1">
 					<img id="red-pawn-5" class="red-pawn" src=""/>
 				</div>
 			</div>
 		<div class="red-cards">
+			<p> red card spot</p>
 			<img id="redcard1" class = "red-card-position" data-card="1" src=""/>
 			<img id="redcard2" class = "red-card-position" data-card="0" src=""/>	
 		</div>
