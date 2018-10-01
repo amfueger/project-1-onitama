@@ -143,6 +143,52 @@ const deck = [{
 	playerx: null,
 	playery: null,
 	img: 'card-images/Rabbit.jpg'
+}, {
+	name: "Ox",
+	redmovement1x: +0,
+	redmovement1y: +1,
+	redmovement2x: +0,
+	redmovement2y: -1,
+	redmovement3x: +1,
+	redmovement3y: +0,
+	playerx: null,
+	playery: null,
+	img: 'card-images/Ox.jpg'
+}, {
+	name: "Crab"
+	redmovement1x: -2,
+	redmovement1y: +0,
+	redmovement2x: +0,
+	redmovement2y: +1,
+	redmovement3x: +2,
+	redmovement3y: +0,
+	playerx: null,
+	playery: null,
+	img: 'card-images/Crab.jpg'
+}, {
+ 	name:"Monkey", 
+	redmovement1x: -1,
+	redmovement1y: +1,
+	redmovement2x: -1,
+	redmovement2y: -1,
+	redmovement3x: +1,
+	redmovement3y: +1,
+	redmovement4x: +1,
+	redmovement5x: -1, 
+	playerx: null, 
+	playery: null,
+	img: 'card-images/Monkey.jpg'
+}, {
+	name: "Eel"
+	redmovement1x: -1,
+	redmovement1y: +1,
+	redmovement2x: -1,
+	redmovement2y: -1,
+	redmovement3x: +1,
+	redmovement3y: +0,
+	playerx: null,
+	playery: null,
+	img: 'card-images/Eel.jpg'
 }, ]
 
 
