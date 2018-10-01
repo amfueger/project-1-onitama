@@ -208,6 +208,7 @@ class Game {
 		this.clickedPawnX = null;
 		this.clickedPawnY = null;
 		this.cardClickedIndex = 0;
+		this.currentDeck = [];
 		//console.log(this.redPawns);
 	}
 	//pass in the coordinates for redmovementx and y on Blue's turn.
@@ -247,14 +248,17 @@ class Game {
 		// 	3. Pawn moves to new div. 
 		this.switchToOtherPlayer();
 	}
+
 	gameSetup() {
 		//THIS WORKS
 		this.redPawns = this.generatePawns("red", 1);
 		this.bluePawns = this.generatePawns("blue", 5);
+		
 		this.currentDeck = this.generateDeck(deck);
 		this.pushCardsintoHand(this.currentDeck);
-		game = new Game();
+
 	}
+
 	setupTurn() {
 		//console.log(this.whoseTurn);
 		if (this.whoseTurn === "red") {
@@ -278,11 +282,14 @@ class Game {
 	singleMove() {
 		//we have our pawn clicked
 		//we have our card clicked, presumably
+		$('.clickable').off('click');
 		clearPawnClickables();
 		if(whoseTurn === "red"){
 			//get the card itself
+			//having trouble moving from on.click to card on.click
 			let currentCard = redHand[cardClickedIndex];
 			//looking at possible moves
+
 			this.clickedPawnY;
 			this.clickedPawnX;
 
@@ -315,12 +322,12 @@ class Game {
 		};
 		return pawns;
 	}
-	generateDeck(deck) {
+	generateDeck() {
 		//had const deck, made a full copy, then use random to pull 5 cards out it with *
 		let fullDeck = [];
-		fullDeck = deck.slice(0); //fullDeck means 16 deck copy
+		fullDeck = this.deck.slice(0); //fullDeck means 16 deck copy
 		//console.log(fullDeck);
-		let currentDeck = []; //five cards
+		 //five cards
 		for (let i = 0; i <= 4; i++) {
 			currentDeck[i] = fullDeck.splice(Math.floor(Math.random * fullDeck.length), 1)[0]; //splice is returning the card inside of an array, a one element array, and running this multiple times, splice removes the card itself, so no multiple options. 
 			//console.log(fullDeck);
@@ -330,7 +337,8 @@ class Game {
 		return currentDeck;
 	}
 	pushCardsintoHand(currentDeck) {
-		this.redHand.push(currentDeck[0]); //no pop because I need to keep track of all five of the cards together. 
+		//no pop because I need to keep track of all five of the cards together. 
+		this.redHand.push(currentDeck[0]); 
 		this.redHand.push(currentDeck[1]);
 		this.blueHand.push(currentDeck[2]);
 		this.blueHand.push(currentDeck[3]);
@@ -363,15 +371,30 @@ let game = new Game();
 game.gameSetup();
 /*****************Listeners************/
 //NOT ABLE TO GET TO PARENT
-$('.clickable').on('click', function(e) {
+// pawns
+$('.clickable').on('click', (e) => {
 	//console.log(e.target);
-	this.clickedPawnX = $(e.target).parent().attr('data-x');
-	this.clickedPawnY = $(e.target).parent().attr('data-y');
-	//console.log(this.clickedPawnX);
-	//console.log(this.clickedPawnY);
+
+	game.clickedPawnX = $(e.target).parent().attr('data-x');
+	game.clickedPawnY = $(e.target).parent().attr('data-y');
+	
+	console.log(game);
 	//console.log($(e.target).parent());
 });
-$('.card-clickable').on('click', function(e) {
+$('.card-clickable').on('click', (e) => {
 	console.log("is this card clickable firing");
-	this.cardClickedIndex = $(e.target).parent().attr('data-card');
+	game.cardClickedIndex = $(e.target).parent().attr('data-card');
 });
+
+
+
+
+$('.cards').on('click', (event) => {
+	console.log(event);
+
+	// logic
+
+
+
+
+})
