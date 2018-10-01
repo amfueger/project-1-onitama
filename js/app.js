@@ -36,7 +36,7 @@ const deck = [{
 	redmovement4y: +0,
 	playerx: null,
 	playery: null,
-	img: 'test-images/Elephant.jpg'
+	img: 'card-images/Elephant.jpg'
 
 }, {
 	name: "Frog",
@@ -50,7 +50,7 @@ const deck = [{
 	redplayery: null,
 	playerx: null,
 	playery: null,
-	img: 'test-images/Frog.jpg'
+	img: 'card-images/Frog.jpg'
 
 }, { //done
 	name: "Mantis",
@@ -155,7 +155,7 @@ const deck = [{
 	playery: null,
 	img: 'card-images/Ox.jpg'
 }, {
-	name: "Crab"
+	name: "Crab",
 	redmovement1x: -2,
 	redmovement1y: +0,
 	redmovement2x: +0,
@@ -179,7 +179,7 @@ const deck = [{
 	playery: null,
 	img: 'card-images/Monkey.jpg'
 }, {
-	name: "Eel"
+	name: "Eel",
 	redmovement1x: -1,
 	redmovement1y: +1,
 	redmovement2x: -1,
@@ -312,12 +312,12 @@ this.switchToOtherPlayer();
 
 	}
 	setupTurn(){
-		console.log(this.whoseTurn);
+		//console.log(this.whoseTurn);
 		if (this.whoseTurn === "red") {
 			$('.red-pawn').addClass('clickable');
 			//add to x,y positions to start. 
-			console.log("test");
-			console.log($('.red-pawn'));
+			//console.log("test");
+			//console.log($('.red-pawn'));
 		} else if (this.whoseTurn === "blue") {
 			$('.blue-pawn').addClass('clickable')
 		} else {
@@ -399,8 +399,8 @@ $('.clickable').on('click', function(e) {
 	//console.log(e.target);
 	this.clickedPawnX = $(e.target).parent().attr('data-x');
 	this.clickedPawnY = $(e.target).parent().attr('data-y');
-	console.log(this.clickedPawnX);
-	console.log(this.clickedPawnY);
+	//console.log(this.clickedPawnX);
+	//console.log(this.clickedPawnY);
 	//console.log($(e.target).parent());
 });
 $('.blue-card-position').on('click', function(e){
