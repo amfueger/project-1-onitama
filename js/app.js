@@ -122,6 +122,7 @@ class Game {
 		this.redHand = [];
 		this.blueHand = [];
 		this.sideCard = {};
+		this.selectedCard = {}; //this is to hold the player's selected card after pawn select
 		this.whoseTurn = "red";
 		this.chosenPawn = {};
 		this.clickedPawnX =  null;
@@ -142,6 +143,8 @@ this.clearClickables();
 // sets up clickable class to use an on.click listener for the pawns of the player whose turn it is.
 this.setupTurn();
 
+
+//
 
 
 //time needed: 
@@ -265,12 +268,15 @@ game.gameSetup();
 
 /*****************Listeners************/
 
-
+//NOT ABLE TO GET TO PARENT
 $('.clickable').on('click', function(e) {
-	console.log(e);
-	this.clickedPawnX = e.square.data('data-x');
-	this.clickedPawnY = e.square.data('data-y');
+	//console.log(e.target);
+	this.clickedPawnX = $(e.target).parent().attr('data-x');
+	this.clickedPawnY = $(e.target).parent().attr('data-y');
 	console.log(this.clickedPawnX);
-}
-
-
+	console.log(this.clickedPawnY);
+	//console.log($(e.target).parent());
+});
+$('.blue-card-position').on('click', function(e){
+	this.selectedCard = $(e.target).attr('data-card');
+})
