@@ -296,7 +296,6 @@ class Game {
 		this.clickedPawnX = null;
 		this.clickedPawnY = null;
 		this.cardClicked = "";
-		//console.log(this.redPawns);
 		this.currentDeck = [];
 	}
 	//pass in the coordinates for redmovementx and y on Blue's turn.
@@ -513,56 +512,42 @@ $('.clickable').on('click', (e) => {
 // });
 
 
+// pawn listener
+	// if (it was ok to click a pawn (booean in game state))
+		// all pawn code - use red/blue state info 
+
+
 
 
 $('.cards').on('click', (e) => {
 
-	console.log(e)
-	console.log(e.target)
-	// get the card that was clicked
-	// game.clickedCard = $('.cards')
-	// e.currtenttarget is the dive you are listening on
-	let itsRed = $(e.currentTarget).hasClass('red-cards');
-	// you need to know if red-cards in the class list of that div
-	// let itsRed = 
-	console.log(itsRed + " its' a red card");
 
-	if(itsRed) { console.log("red card was clicked")
+	// only do all of the following code if it was ok to click a card
+
+	let itsRed = $(e.currentTarget).hasClass('red-cards');
+
+	if(itsRed) { // if red card was clicked
 
 		// if it's red's turn
 		if(game.whoseTurn === "red") { 
-			// game.clickedCard = $('.red-cards').data('card');
-			// // allow player to choose move - method
-			// console.log(game.clickedCard);
-			// console.log(this.clickedCard.data('card'))
+
 			console.log("red card was clicked and that's ok because it's reds turn")
 			// make boolean true: amIexpectingAClickOnASquare
 
 		}
-	} else { console.log("blue card was clicked");
-	// else (if blue was clicked)
+
+	} else {  // else (if blue was clicked)
 
 		if(game.whoseTurn.toString() === "blue") {
-			// game.clickedCard = $('.blue-cards').data('card');
-			//add clickable class in here? 
-			//important because we need to use clickables to assign that class to the squares that are NOW clickable
-			// cardClicked.addClass('clickable-moves');
-			// allow player to choose move - method
-			// console.log(game.clickedCard);
-			// console.log(this.clickedCard.data('card'))
-			//game.chooseMove(game.clickedCard);
+
 			console.log("blue card was clicked and that's ok because it's blue's turn")
 		}
 
 	}
-	// return game.clickedCard;
-	console.log(game.cardClicked);
-
 
 
 
 })
-console.log(game.clickedCard);
 
 
 
