@@ -124,25 +124,29 @@ class Game {
 		this.sideCard = {};
 		this.whoseTurn = "red";
 		this.chosenPawn = {};
-		console.log(this.redPawns);
+		//console.log(this.redPawns);
 	}
-//solicit button click for color. Player one, which color would you rather be?
-//make pawns
+
 //pass in the coordinates for redmovementx and y on Blue's turn.
 //Make sure arguments comes in as a number!!!! 
 //define the movement in the card for one of the pieces. When I write the moving piece, it checks to see if the pawn is blue, it multiplies the movement by -1
 	
 	gamePlay() {
-// 		5. Pawn selected - click pawn on board OR click separate button
 
+//gameSetup sets pawns for both hands, each of the player's hands of two cards, and puts the pawns in the correct positions
 this.gameSetup();
+// clears out any classes of clickable so that turn play can start.
 this.clearClickables();
+// sets up clickable class to use an on.click listener for the pawns of the player whose turn it is.
 this.setupTurn();
 
-// the jquery selector class we're listening for
-//put attributes on the first line of the red pawns
-// 	1. Text prompt to select which of player's two cards to use
 
+//time needed: 
+//couple hours for available move?
+//another hour or so for card swapping?
+//victory conditions hour?
+//onclicks 2 hours
+//taking a piece logic 45-2 hours, as in removing from board
 
 
 // 		2. User clicks card they wish to use
@@ -159,6 +163,7 @@ this.setupTurn();
 // 		2. Remove button or pawn.
 // 	2. If empty, change property position of pawn.
 // 	3. Pawn moves to new div. 
+this.switchToOtherPlayer(game.whoseTurn);
 	}
 	gameSetup() {
 		//THIS WORKS
@@ -168,6 +173,7 @@ this.setupTurn();
 		this.currentDeck = this.generateDeck(deck);
 		this.pushCardsintoHand(this.currentDeck);
 		game = new Game();
+
 	}
 	setupTurn(){
 		console.log(this.whoseTurn);
@@ -230,9 +236,16 @@ this.setupTurn();
 		// console.log(this.blueHand);
 		// console.log(this.sideCard);
 	}
-	switchCards(playerhand, ) {
+	switchCards(playerhand) {
 		//need a third variable to temporarily store the side card
 		//
+	}
+	switchToOtherPlayer(whoseTurn) {
+		if(whoseTurn === "red") {
+			whoseTurn = "blue";
+		} else if (whoseTurn === "blue") {
+			whoseTurn = "red";
+		}
 	}
 
 }
