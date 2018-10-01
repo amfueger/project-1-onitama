@@ -8,9 +8,9 @@ const deck = [{
 	redmovement2y: -1,
 	redmovement3x: +1,
 	redmovement3y: +1,
-	redplayerx: null,
-	redplayery: null,
-	img: 'test-images/cobra.jpeg'
+	playerx: null,
+	playery: null,
+	img: 'card-images/cobra.jpg'
  }, {
  	name:"Goose", 
 	redmovement1x: -1,
@@ -21,9 +21,9 @@ const deck = [{
 	redmovement3y: +0,
 	redmovement4x: +1,
 	redmovement5x: -1, 
-	redplayerx: null, 
-	redplayery: null,
-	img: 'test-images/goose.jpeg'
+	playerx: null, 
+	playery: null,
+	img: 'card-images/goose.jpg'
 }, {
 	name: "Elephant",
 	redmovement1x: -1,
@@ -34,40 +34,116 @@ const deck = [{
 	redmovement3y: +1,
 	redmovement4x: +1,
 	redmovement4y: +0,
-	redplayerx: null,
-	redplayery: null,
-	blueplayerx: null,
-	blueplayery: null,
-	img: 'test-images/elephant.jpeg'
+	playerx: null,
+	playery: null,
+	img: 'test-images/Elephant.jpg'
 
 }, {
 	name: "Frog",
-	redmovement1x: 0,
-	redmovement1y: 0,
-	redmovement2x: 0,
-	redmovement2y: 0,
-	redmovement3x: 0,
-	redmovement3y: 0,
+	redmovement1x: -2,
+	redmovement1y: +0,
+	redmovement2x: -1,
+	redmovement2y: +1,
+	redmovement3x: +1,
+	redmovement3y: -1,
 	redplayerx: null,
 	redplayery: null,
-	blueplayerx: null,
-	blueplayery: null,
-	img: 'test-images/frog.jpeg'
+	playerx: null,
+	playery: null,
+	img: 'test-images/Frog.jpg'
+
+}, { //done
+	name: "Mantis",
+	redmovement1x: -1,
+	redmovement1y: +1,
+	redmovement2x: +0,
+	redmovement2y: -1,
+	redmovement3x: +1,
+	redmovement3y: +1,
+	playerx: null,
+	playery: null,
+	img: 'card-images/Mantis.jpg'
 
 }, {
-	name: "Frog2test",
-	redmovement1x: 0,
-	redmovement1y: 0,
-	redmovement2x: 0,
-	redmovement2y: 0,
-	redmovement3x: 0,
-	redmovement3y: 0,
-	redplayerx: null,
-	redplayery: null,
-	blueplayerx: null,
-	blueplayery: null,
-
-}]
+	name: "Boar",
+	redmovement1x: -1,
+	redmovement1y: +0,
+	redmovement2x: +0,
+	redmovement2y: +1,
+	redmovement3x: +0,
+	redmovement3y: +1,
+	playerx: null,
+	playery: null,
+	img: 'card-images/Boar.jpg'
+}, {
+	name: "Rooster",
+	redmovement1x: -1,
+	redmovement1y: +0,
+	redmovement2x: -1,
+	redmovement2y: -1,
+	redmovement3x: +1,
+	redmovement3y: +1,
+	redmovement4x: +1,
+	redmovement4y: +0,
+	playerx: null,
+	playery: null,
+	img: 'card-images/Rooster.jpg'
+}, {
+	name: "Crane",
+	redmovement1x: -1,
+	redmovement1y: -1,
+	redmovement2x: +0,
+	redmovement2y: +1,
+	redmovement3x: +1,
+	redmovement3y: -1,
+	playerx: null,
+	playery: null,
+	img: 'card-images/Crane.jpg'
+}, {
+	name: "Horse",
+	redmovement1x: -1,
+	redmovement1y: +0,
+	redmovement2x: +0,
+	redmovement2y: +1,
+	redmovement3x: +0,
+	redmovement3y: -1,
+	playerx: null,
+	playery: null,
+	img: 'card-images/Horse.jpg'
+}, {
+	name: "Tiger",
+	redmovement1x: +0,
+	redmovement1y: +2,
+	redmovement2x: +0,
+	redmovement2y: -1,
+	playerx: null,
+	playery: null,
+	img: 'card-images/Tiger.jpg'
+}, {
+	name: "Dragon",
+	redmovement1x: -2,
+	redmovement1y: +1,
+	redmovement2x: -1,
+	redmovement2y: -1,
+	redmovement3x: +2,
+	redmovement3y: +1,
+	redmovement4x: +1,
+	redmovement4y: -1,
+	playerx: null,
+	playery: null,
+	img: 'card-images/Dragon.jpg'
+}, {
+	name: "Rabbit",
+	redmovement1x: -1,
+	redmovement1y: -1,
+	redmovement2x: +1,
+	redmovement2y: +1,
+	redmovement3x: +2,
+	redmovement3y: +0,
+	playerx: null,
+	playery: null,
+	img: 'card-images/Rabbit.jpg'
+}, ]
 
 
 //Pawn 1's x coordinate = Pawn 1's x coordinate + card property movement 1's x #. 
