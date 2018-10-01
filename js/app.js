@@ -10,6 +10,7 @@ const deck = [{
 	redmovement3y: +1,
 	redplayerx: null,
 	redplayery: null,
+	img: 'test-images/cobra.jpeg'
  }, {
  	name:"Goose", 
 	redmovement1x: -1,
@@ -22,6 +23,7 @@ const deck = [{
 	redmovement5x: -1, 
 	redplayerx: null, 
 	redplayery: null,
+	img: 'test-images/goose.jpeg'
 }, {
 	name: "Elephant",
 	redmovement1x: -1,
@@ -36,6 +38,7 @@ const deck = [{
 	redplayery: null,
 	blueplayerx: null,
 	blueplayery: null,
+	img: 'test-images/elephant.jpeg'
 
 }, {
 	name: "Frog",
@@ -49,6 +52,7 @@ const deck = [{
 	redplayery: null,
 	blueplayerx: null,
 	blueplayery: null,
+	img: 'test-images/frog.jpeg'
 
 }, {
 	name: "Frog2test",
