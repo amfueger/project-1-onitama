@@ -271,8 +271,24 @@ class Game {
 		this.currentDeck = this.generateDeck(deck);
 		this.pushCardsintoHand(this.currentDeck);
 	}
-	senseiStone(pawnnumber) {}
-	senseiStream(x, y) {}
+	senseiStone() {}
+	senseiStream() {
+		//if red pawn number 3's location is x = 3, y =5
+		//No need to listen for whose turn, because the pawn would only move on the turn of the right player anyway. This is just called to check on that. 
+		if (this.redPawns[2].x === 3 && this.redPawns[2].y === 5) {
+			return true;
+		} else {
+			if (this.bluePawns[2].x === 3 && this.bluePawns[2].y === 1) //pawn is on x = 3, y = 1
+				return false;
+		}
+	}
+	endGame() {
+		if (senseiStream() === true) {
+			//RED WINS, RED IS TRUE
+		} else {
+			//BLUE WINS, BLUE IS FALSE
+		}
+	}
 	generatePawns(color, y) {
 		//note, DO NOT CHANGE STARTING POINT OF I, you will fuck everything.
 		let pawns = [];
@@ -314,8 +330,15 @@ class Game {
 		// console.log(this.blueHand);
 		// console.log(this.sideCard);
 	}
+	removeOpponentPawn() {
+		//assume that the pawn img has just moved in to the div from clicking
+		//if inside the div tag there are two images, remove the FIRST one (since we are using append for the pawn that just moved in)
+	}
 	switchCards(playerhand) {
 		//need a third variable to temporarily store the side card
+		if (this.whoseTurn === "red") {
+			let sideCardMoving = this.blueHand.splice()
+		}
 		//
 	}
 	switchToOtherPlayer() {
@@ -335,52 +358,48 @@ class Game {
 	//5. If it is, it assigns the class .click-square
 	setupSquare() {
 		if (this.whoseTurn === "red") {
-			for (let i = 0; i < this.cardClicked.moves[length]; i++) {
+			//[{property[property]}]
+			for (let i = 0; i < this.cardClicked.moves.length; i++) {
 				//the y and x now equal the current pawn position + the card's moves in the array
-				this.clickedPawnY = this.cardClicked.moves[i].y + this.clickedPawnY;
-				this.clickedPawnX = this.cardClicked.moves[i].x + this.clickedPawnX;
+				//tested syntax of this.cardClicked.moves[i].y, works to return a number
+				this.clickedPawnY = Number(this.cardClicked.moves[i].y + this.clickedPawnY);
+				this.clickedPawnX = Number(this.cardClicked.moves[i].x + this.clickedPawnX);
+				//WORKS TO CHANGE CLICKED PAWN TO POSSIBLE MOVE
 				//checking the possible move against the div tags
-				if (this.clickedPawnX === $('.square').data('x') && this.clickedPawnY === $('.square').data('y')) {
-					//add class to squares that makes them clickable
-					$('.square').addClass('click-square');
-					this.clickedPawnY = this.clickedPawnY - this.cardClicked.moves[i].y;
-					this.clickedPawnX = this.clickedPawnX - this.cardClicked.moves[i].x;
-				} 
+				if (this.clickedPawnX === $(e.target).data('x') && this.clickedPawnY === $(e.target).data('y')) {
+					$(e.target).addClass('click-square');
+					//this.clickedPawnY = this.clickedPawnY - this.cardClicked.moves[i].y;
+					//this.clickedPawnX = this.clickedPawnX - this.cardClicked.moves[i].x;
+				}
 				//Does there need to be a return here? I don't think so, because all we needed was to assign class, which is done in the above loop, and then reset the clickedPawnX/Y to what they were before in order to restart the loop fresh.
 			}
-			
-		} else { 
-				let bluePawnMovesY = this.cardClicked.moves[i].y;
-				let bluePawnMovesX = this.cardClicked.moves[i].x;
-				//is negative
-				if(bluePawnMovesY < 0) {
-					//makes positive
-					bluePawnMovesY = Math.abs(this.cardClicked.moves[i].y);
-					
-				} //is positive
-				if (bluePawnMovesY > -1) {
-					//makes negative
-					bluePawnMovesY = this.cardClicked.moves[i].y * -1;
-					
-				}//is negative
-				if (bluePawnMovesX < 0) {
-					//Makes positive
-					bluePawnMovesX = Math.abs(this.cardClicked.moves[i].x);
-				} //is positive	
-				if (bluePawnMovesX > -1 ) {
-					bluePawnMovesX = this.cardClicked.moves[i].x * -1;
-				}
-
-				this.clickedPawnY = bluePawnMovesY + this.clickedPawnY;
-				this.clickedPawnX = bluePawnMovesX + this.clickedPawnX;
-				if (this.clickedPawnX === $('.square').data('x') && this.clickedPawnY === $('.square').data('y')) {
-					//add class to squares that makes them clickable
-					$('.square').addClass('click-square');
-					this.clickedPawnY = this.clickedPawnY - bluePawnMovesY;
-					this.clickedPawnX = this.clickedPawnX - bluePawnMovesX;
-				} 
-
-
+		} else {
+			let bluePawnMovesY = this.cardClicked.moves[i].y;
+			let bluePawnMovesX = this.cardClicked.moves[i].x;
+			//is negative
+			if (bluePawnMovesY < 0) {
+				//makes positive
+				bluePawnMovesY = Math.abs(this.cardClicked.moves[i].y);
+			} //is positive
+			if (bluePawnMovesY > -1) {
+				//makes negative
+				bluePawnMovesY = this.cardClicked.moves[i].y * -1;
+			} //is negative
+			if (bluePawnMovesX < 0) {
+				//Makes positive
+				bluePawnMovesX = Math.abs(this.cardClicked.moves[i].x);
+			} //is positive	
+			if (bluePawnMovesX > -1) {
+				bluePawnMovesX = this.cardClicked.moves[i].x * -1;
+			}
+			this.clickedPawnY = bluePawnMovesY + this.clickedPawnY;
+			this.clickedPawnX = bluePawnMovesX + this.clickedPawnX;
+			if (this.clickedPawnX === $(e.target).data('x') && this.clickedPawnY === $(e.target).data('y')) {
+				//add class to squares that makes them clickable
+				$(e.target).addClass('click-square');
+				//this.clickedPawnY = this.clickedPawnY - bluePawnMovesY;
+				//this.clickedPawnX = this.clickedPawnX - bluePawnMovesX;
+			}
 		}
 	}
 }
@@ -393,15 +412,15 @@ $('.pawn').on('click', (e) => {
 		//console.log(itsRedPawn + " it's Red Pawn");
 		if (itsRedPawn) {
 			if (game.whoseTurn === "red") {
-					game.clickedPawnX = $(e.target).parent().data('x'); //works
-					game.clickedPawnY = $(e.target).parent().data('y'); //works
-					//assigns current-pawn class to both div and child img. This is to ensure recovery of x/y data and allow the img to move. 
-					game.currentPawn = $(e.target).parent().addClass('current-pawn').children('img').addClass('current-pawn');	
-					//game.currentPawn = $('.current-pawn');
-					//This inclues the div class and the pawn itself. Note this for later because only the img moves.
-					//console.log(game.currentPawn + "After Red turn, this is the current pawn assignation");
-					game.waitingforCard = true;
-					game.waitingForPawn = false;
+				game.clickedPawnX = $(e.target).parent().data('x'); //works
+				game.clickedPawnY = $(e.target).parent().data('y'); //works
+				//assigns current-pawn class to both div and child img. This is to ensure recovery of x/y data and allow the img to move. 
+				game.currentPawn = $(e.target).parent().addClass('current-pawn').children('img').addClass('current-pawn');
+				//game.currentPawn = $('.current-pawn');
+				//This inclues the div class and the pawn itself. Note this for later because only the img moves.
+				//console.log(game.currentPawn + "After Red turn, this is the current pawn assignation");
+				game.waitingforCard = true;
+				game.waitingForPawn = false;
 				// console.log(game.clickedPawnX + " x  and " + game.clickedPawnY + " y");
 				// console.log(game.currentPawn + " current pawn selected" );	
 				// console.log(game.waitingforCard + " <<< THIS SHOULD BE FALSE, RED");
@@ -409,20 +428,19 @@ $('.pawn').on('click', (e) => {
 			}
 		} else {
 			if (game.whoseTurn === "blue") {
-					game.clickedPawnX = $(e.target).parent().data('x');
-					game.clickedPawnY = $(e.target).parent().data('y');
-					game.currentPawn = $(e.target).parent().addClass('current-pawn').children('img').addClass('current-pawn');	
-					game.currentPawn = $('.current-pawn'); //This inclues the div class and the pawn itself. Note this for later because only the img moves.
-					//console.log(game.currentPawn + "After Blue turn, this is the current pawn assignation");
-					game.waitingforCard = true;
-					game.waitingForPawn = false;
-					// console.log(game.clickedPawnX + " x  and " + game.clickedPawnY + " y");
-					// console.log(game.currentPawn + " current pawn selected" );	
-					// console.log(game.waitingforPawn + " <<<This should be false, blue");
-					// console.log(game.waitingforCard + " <<<THIS SHOULD BE TRUE BLUE ");
+				game.clickedPawnX = $(e.target).parent().data('x');
+				game.clickedPawnY = $(e.target).parent().data('y');
+				game.currentPawn = $(e.target).parent().addClass('current-pawn').children('img').addClass('current-pawn');
+				game.currentPawn = $('.current-pawn'); //This inclues the div class and the pawn itself. Note this for later because only the img moves.
+				//console.log(game.currentPawn + "After Blue turn, this is the current pawn assignation");
+				game.waitingforCard = true;
+				game.waitingForPawn = false;
+				// console.log(game.clickedPawnX + " x  and " + game.clickedPawnY + " y");
+				// console.log(game.currentPawn + " current pawn selected" );	
+				// console.log(game.waitingforPawn + " <<<This should be false, blue");
+				// console.log(game.waitingforCard + " <<<THIS SHOULD BE TRUE BLUE ");
 			}
-		} 
-		
+		}
 	}
 });
 $('.cards').on('click', (e) => {
@@ -435,6 +453,9 @@ $('.cards').on('click', (e) => {
 			if (game.whoseTurn === "red") {
 				//console.log(" red card was clicked and that's ok because it's reds turn")
 				// Boolean for moving on to square click
+				let cardClickedIndex = $(e.target).data('card');
+				game.cardClicked = game.redHand[cardClickedIndex];
+				//console.log(game.cardClicked + " testing red card clicked"); WORKS
 				//No need to take in more data, because the data we need is still in the card.
 				game.waitingforCard = false;
 				game.waitingforSquare = true;
@@ -442,17 +463,21 @@ $('.cards').on('click', (e) => {
 		} else { // else (if blue was clicked)
 			if (game.whoseTurn === "blue") {
 				//console.log(" blue card was clicked and that's ok because it's blue's turn")
+				//this is making it that div, but I need the card to correspond to the blueHand array
+				//I made sure the div tags matched the card number, so that the card that's clicked lines up with ends up in the array. 
+				let cardClickedIndex = $(e.target).data('card');
+				game.cardClicked = game.blueHand[cardClickedIndex];
+				// console.log(game.cardClicked + " testing blue card clicked"); WORKS
 				game.waitingforCard = false;
 				game.waitingforSquare = true;
 			}
 		}
 	}
 });
-
 $('.square').on('click', (e) => {
-	if(game.waitingforSquare === true) {
+	if (game.waitingforSquare === true) {
 		setupSquare();
-		if($('.square').hasClass('click-square')) {
+		if ($('.square').hasClass('click-square')) {
 			//hold current pawn in variable so that when removal happens, I can append the variable to the correct div element
 			let pawn = $('img.current-pawn');
 			console.log(pawn + " this should be IMG");
@@ -464,5 +489,4 @@ $('.square').on('click', (e) => {
 			//then the square that is clicked appends the current-pawn
 		}
 	}
-
 })
