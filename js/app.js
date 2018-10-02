@@ -254,8 +254,8 @@ class Game {
 		this.blueHand = [];
 		this.sideCard = {};
 		this.selectedCard = {}; //this is to hold the player's selected card after pawn select
-		this.whoseTurn = "blue"; //true for red?
-		this.chosenPawn = {};
+		this.whoseTurn = "red"; //true for red?
+		this.chosenPawnElement = {};
 		this.clickedPawnX = null;
 		this.clickedPawnY = null;
 		this.cardClicked = "";
@@ -263,6 +263,10 @@ class Game {
 		this.waitingforSquare = false;
 		this.waitingforCard = false;
 		this.waitingforPawn = true;
+		this.currentPawn = null;
+		this.cardClickedIndex = null;
+		this.newPawnPositionY = null;
+		this.newPawnPositionX = null;
 	}
 	gameSetup() {
 		//THIS WORKS
@@ -334,10 +338,16 @@ class Game {
 		//assume that the pawn img has just moved in to the div from clicking
 		//if inside the div tag there are two images, remove the FIRST one (since we are using append for the pawn that just moved in)
 	}
-	switchCards(playerhand) {
+	switchCards() {
 		//need a third variable to temporarily store the side card
 		if (this.whoseTurn === "red") {
-			let sideCardMoving = this.blueHand.splice()
+			let sideCardMoving = this.redHand.splice(this.cardClickedIndex);
+			this.redHand.append(this.sideCard);
+			this.sideCard = sideCardMoving;
+		} else {
+			let sideCardMoving = this.blueHand.splice(this.cardClickedIndex);
+			this.blueHand.append(this.sideCard);
+			this.sideCard = sideCardMoving;	
 		}
 		//
 	}
@@ -350,29 +360,35 @@ class Game {
 		}
 		//console.log(this.whoseTurn);
 	}
-	//This method 
-	//1. determines turn. 
-	//2. looks in the array of moves to find the property of x and y on the clicked card. 
-	//3. It takes those values of x and y and adds them to their respective x and y of the clicked pawn. 
-	//4. It then asks if the new clickedPawn X and Y are equal to the value of a .square's data type of X and y value. 
-	//5. If it is, it assigns the class .click-square
-	setupSquare() {
+	movePawn(e) {
 		if (this.whoseTurn === "red") {
 			//[{property[property]}]
 			for (let i = 0; i < this.cardClicked.moves.length; i++) {
 				//the y and x now equal the current pawn position + the card's moves in the array
 				//tested syntax of this.cardClicked.moves[i].y, works to return a number
-				this.clickedPawnY = Number(this.cardClicked.moves[i].y + this.clickedPawnY);
-				this.clickedPawnX = Number(this.cardClicked.moves[i].x + this.clickedPawnX);
+				//console.log(i + " i using it as an index"); WORKING
+				this.newPawnPositionY = Number(this.cardClicked.moves[i].y + this.clickedPawnY);
+				this.newPawnPositionX = Number(this.cardClicked.moves[i].x + this.clickedPawnX);
 				//WORKS TO CHANGE CLICKED PAWN TO POSSIBLE MOVE
 				//checking the possible move against the div tags
-				if (this.clickedPawnX === $(e.target).data('x') && this.clickedPawnY === $(e.target).data('y')) {
-					$(e.target).addClass('click-square');
-					//this.clickedPawnY = this.clickedPawnY - this.cardClicked.moves[i].y;
-					//this.clickedPawnX = this.clickedPawnX - this.cardClicked.moves[i].x;
+				if (this.newPawnPositionX === $(e.target).data('x') && this.newPawnPositionY === $(e.target).data('y')) {
+					//If the div's data x and y are equal to any of the above loops, which is above, allow that click??? Or is it already allowed? 
+
+					//assume it's already allowed, then current target should get pawn img reassigned to that div. 
+					this.chosenPawnElement = $('.pawn.current-pawn');//the img that has current-pawn class.
+					//$('div .current-pawn').eq(0).detatch(); //takes the class current-pawn that rests on the div and detaches the first child, which is the img
+					$('div > .current-pawn').eq(0).detatch();
+					console.log($('div.current-pawn') + " show that the div tag is empty"); //shows div tag is empty
+					$(e.target).append(this.chosenPawnElement); //appends that thing to the target click.
+					console.log(this.chosenPawnElement +  " inside its div this should be IMG"); //test whether that img's 
+
+					console.log(this.currentPawn + " current pawn within movePawn loop");
+					//hold current pawn in variable so that when removal happens, I can append the variable to the correct div element
+					
 				}
-				//Does there need to be a return here? I don't think so, because all we needed was to assign class, which is done in the above loop, and then reset the clickedPawnX/Y to what they were before in order to restart the loop fresh.
+			
 			}
+
 		} else {
 			let bluePawnMovesY = this.cardClicked.moves[i].y;
 			let bluePawnMovesX = this.cardClicked.moves[i].x;
@@ -453,8 +469,8 @@ $('.cards').on('click', (e) => {
 			if (game.whoseTurn === "red") {
 				//console.log(" red card was clicked and that's ok because it's reds turn")
 				// Boolean for moving on to square click
-				let cardClickedIndex = $(e.target).data('card');
-				game.cardClicked = game.redHand[cardClickedIndex];
+				game.cardClickedIndex = $(e.target).data('card');
+				game.cardClicked = game.redHand[game.cardClickedIndex];
 				//console.log(game.cardClicked + " testing red card clicked"); WORKS
 				//No need to take in more data, because the data we need is still in the card.
 				game.waitingforCard = false;
@@ -465,8 +481,8 @@ $('.cards').on('click', (e) => {
 				//console.log(" blue card was clicked and that's ok because it's blue's turn")
 				//this is making it that div, but I need the card to correspond to the blueHand array
 				//I made sure the div tags matched the card number, so that the card that's clicked lines up with ends up in the array. 
-				let cardClickedIndex = $(e.target).data('card');
-				game.cardClicked = game.blueHand[cardClickedIndex];
+				game.cardClickedIndex = $(e.target).data('card');
+				game.cardClicked = game.blueHand[game.cardClickedIndex];
 				// console.log(game.cardClicked + " testing blue card clicked"); WORKS
 				game.waitingforCard = false;
 				game.waitingforSquare = true;
@@ -476,17 +492,8 @@ $('.cards').on('click', (e) => {
 });
 $('.square').on('click', (e) => {
 	if (game.waitingforSquare === true) {
-		setupSquare();
-		if ($('.square').hasClass('click-square')) {
-			//hold current pawn in variable so that when removal happens, I can append the variable to the correct div element
-			let pawn = $('img.current-pawn');
-			console.log(pawn + " this should be IMG");
-			//remove current-pawn from its div
-			$('div.current-pawn').eq(0).remove();
-			console.log($('div.current-pawn') + " show that the div tag is empty");
-			//$('div.current-pawn').empty();
-			$(e.target).append(pawn);
-			//then the square that is clicked appends the current-pawn
-		}
+		game.movePawn(e);
+		
+		
 	}
 })
