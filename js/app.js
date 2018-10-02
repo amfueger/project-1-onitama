@@ -274,7 +274,16 @@ class Game {
 		this.currentDeck = this.generateDeck(deck);
 		this.pushCardsintoHand(this.currentDeck);
 	}
-	senseiStone() {}
+	senseiStone() {
+		if($('div').has($('#red-pawn-3'))) {
+			return false;
+		} 
+		if($('div').has($('#blue-pawn-3'))) {
+			return false;
+		} 
+		return true;
+
+	}
 	senseiStream() {
 		//if red pawn number 3's location is x = 3, y =5
 		//No need to listen for whose turn, because the pawn would only move on the turn of the right player anyway. This is just called to check on that. 
@@ -288,10 +297,14 @@ class Game {
 	checkVictory() {
 		if (senseiStream() === true || senseiStone() === true) {
 			//RED WINS, RED IS TRUE
+			console.log("Red wins");
 		} else if (senseiStream() === false || senseiStone() === false){
 			//BLUE WINS, BLUE IS FALSE
+			console.log("Blue wins");
 		} else {
-			break;
+			//not sure how to make this work
+			console.log("No one has won yet");
+			
 		}
 	}
 	generatePawns(color, y) {
@@ -354,12 +367,14 @@ class Game {
 	checkIfPawnOfColorIsThere(e){
 		if(this.whoseTurn === "red") {
 			if ($(e.target).has('.red-pawn')) {
-				//don't allow e.target??????
+				return true;
+			} 
+			
+		} else if(this.whoseTurn === "blue") {
+			if($(e.target).has('.blue-pawn'))
+				return true;
 			}
-		} else {
-			break;
-		}
-
+			return false;	
 	}
 	switchCards() {
 		//need a third variable to temporarily store the side card
@@ -411,7 +426,7 @@ class Game {
 				this.newPawnPositionX = Number(this.cardClicked.moves[i].x + this.clickedPawnX);
 				//WORKS TO CHANGE CLICKED PAWN TO POSSIBLE MOVE
 				//checking the possible move against the div tags
-				if (this.newPawnPositionX === $(e.target).data('x') && this.newPawnPositionY === $(e.target).data('y')) {
+				if (this.newPawnPositionX === $(e.target).data('x') && this.newPawnPositionY === $(e.target).data('y') && this.checkIfPawnOfColorIsThere(e) === false) {
 					//If the div's data x and y are equal to any of the above loops, which is above, allow that click??? Or is it already allowed? 
 					//assume it's already allowed, then current target should get pawn img reassigned to that div. 
 					//THE REASON THE DIV TAG AND THE IMG CHILD HAVE THE SAME CLASS IS BECAUSE IN ORDER TO MOVE IT I NEED TO SELECT THE SPECIFIC CLASS THAT IS HOUSING THE DIV. 
@@ -427,9 +442,9 @@ class Game {
 					this.removeOpponentPawn(this.e);
 					//NOW remove current-pawn class
 					$('img').removeClass('current-pawn')
-					//this.checkVictory();
-					//this.switchCards(); <<< make sure it happens before player switch, because clearing of cardClickedIndex
-					//this.switchToOtherPlayer();
+					this.checkVictory();
+					this.switchCards();
+					this.switchToOtherPlayer();
 				}
 			}
 		} else {
@@ -453,7 +468,7 @@ class Game {
 			}
 			this.clickedPawnY = bluePawnMovesY + this.clickedPawnY;
 			this.clickedPawnX = bluePawnMovesX + this.clickedPawnX;
-			if (this.newPawnPositionX === $(e.target).data('x') && this.newPawnPositionY === $(e.target).data('y')) {
+			if (this.newPawnPositionX === $(e.target).data('x') && this.newPawnPositionY === $(e.target).data('y') && this.checkIfPawnOfColorIsThere(e) === false) {
 				let currentPawnImage = this.currentPawn.detach();
 				$(e.target).append(currentPawnImage); //appends that thing to the target click.
 				//Should be able to see in console and on screen the pawn move. 
