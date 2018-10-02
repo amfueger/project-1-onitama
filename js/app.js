@@ -5,12 +5,10 @@ const deck = [{
 	moves: [{
 		x: -1,
 		y: +0
-	},
-	{
+	}, {
 		x: +1,
 		y: -1
-	},
-	{
+	}, {
 		x: +1,
 		y: +1
 	}],
@@ -20,16 +18,13 @@ const deck = [{
 	moves: [{
 		x: -1,
 		y: +1
-	},
-	{ 
+	}, {
 		x: -1,
 		y: +0
-	},
-	{
+	}, {
 		x: +1,
 		y: +0
-	},
-	{
+	}, {
 		x: +1,
 		y: -1
 	}],
@@ -39,16 +34,13 @@ const deck = [{
 	moves: [{
 		x: -1,
 		y: +1
-	},
-	{ 
+	}, {
 		x: -1,
 		y: +0
-	},
-	{
+	}, {
 		x: +1,
 		y: +1
-	},
-	{
+	}, {
 		x: +1,
 		y: +0
 	}],
@@ -58,12 +50,10 @@ const deck = [{
 	moves: [{
 		x: -2,
 		y: +0
-	},
-	{ 
+	}, {
 		x: -1,
 		y: +1
-	},
-	{
+	}, {
 		x: +1,
 		y: -1
 	}],
@@ -73,12 +63,10 @@ const deck = [{
 	moves: [{
 		x: -1,
 		y: +1
-	},
-	{ 
+	}, {
 		x: +0,
 		y: -1
-	},
-	{
+	}, {
 		x: +1,
 		y: +1
 	}],
@@ -88,12 +76,10 @@ const deck = [{
 	moves: [{
 		x: -1,
 		y: +0
-	},
-	{ 
+	}, {
 		x: +0,
 		y: +1
-	},
-	{
+	}, {
 		x: +0,
 		y: +1
 	}],
@@ -103,16 +89,13 @@ const deck = [{
 	moves: [{
 		x: -1,
 		y: +0
-	},
-	{ 
+	}, {
 		x: -1,
 		y: -1
-	},
-	{
+	}, {
 		x: +1,
 		y: +1
-	},
-	{
+	}, {
 		x: +1,
 		y: +0
 	}],
@@ -122,12 +105,10 @@ const deck = [{
 	moves: [{
 		x: -1,
 		y: -1
-	},
-	{ 
+	}, {
 		x: +0,
 		y: +1
-	},
-	{
+	}, {
 		x: +1,
 		y: -1
 	}],
@@ -137,12 +118,10 @@ const deck = [{
 	moves: [{
 		x: -1,
 		y: +0
-	},
-	{ 
+	}, {
 		x: +0,
 		y: +1
-	},
-	{
+	}, {
 		x: +0,
 		y: -1
 	}],
@@ -152,8 +131,7 @@ const deck = [{
 	moves: [{
 		x: +0,
 		y: +2
-	},
-	{ 
+	}, {
 		x: +0,
 		y: -1
 	}],
@@ -163,16 +141,13 @@ const deck = [{
 	moves: [{
 		x: -2,
 		y: +1
-	},
-	{ 
+	}, {
 		x: -1,
 		y: -1
-	},
-	{
+	}, {
 		x: +2,
 		y: +1
-	},
-	{
+	}, {
 		x: +1,
 		y: -1
 	}],
@@ -182,12 +157,10 @@ const deck = [{
 	moves: [{
 		x: -1,
 		y: -1
-	},
-	{ 
+	}, {
 		x: +1,
 		y: +1
-	},
-	{
+	}, {
 		x: +2,
 		y: +0
 	}],
@@ -197,12 +170,10 @@ const deck = [{
 	moves: [{
 		x: +0,
 		y: +1
-	},
-	{ 
+	}, {
 		x: +0,
 		y: -1
-	},
-	{
+	}, {
 		x: +1,
 		y: +0
 	}],
@@ -212,12 +183,10 @@ const deck = [{
 	moves: [{
 		x: -2,
 		y: +0
-	},
-	{ 
+	}, {
 		x: +0,
 		y: +1
-	},
-	{
+	}, {
 		x: +2,
 		y: +0
 	}],
@@ -227,16 +196,13 @@ const deck = [{
 	moves: [{
 		x: -1,
 		y: +1
-	},
-	{ 
+	}, {
 		x: -1,
 		y: -1
-	},
-	{
+	}, {
 		x: +1,
 		y: +1
-	},
-	{
+	}, {
 		x: +1,
 		y: -1
 	}],
@@ -246,18 +212,15 @@ const deck = [{
 	moves: [{
 		x: -1,
 		y: +1
-	},
-	{ 
+	}, {
 		x: -1,
 		y: -1
-	},
-	{
+	}, {
 		x: +1,
 		y: +0
 	}],
 	img: 'card-images/Eel.jpg'
 }]
-
 class Deck {
 	// draw a random card
 	// deck has a property of cards
@@ -297,6 +260,9 @@ class Game {
 		this.clickedPawnY = null;
 		this.cardClicked = "";
 		this.currentDeck = [];
+		this.waitingforSquare = false;
+		this.waitingforCard = false;
+		this.waitingforPawn = true;
 	}
 	//pass in the coordinates for redmovementx and y on Blue's turn.
 	//Make sure arguments comes in as a number!!!! 
@@ -305,10 +271,6 @@ class Game {
 		//gameSetup sets pawns for both hands, each of the player's hands of two cards, and puts the pawns in the correct positions
 		this.gameSetup();
 		// clears out any classes of clickable so that turn play can start.
-		this.clearPawnClickables();
-		this.clearCardClickable();
-		// sets up clickable class to use an on.click listener for the pawns of the player whose turn it is.
-		this.setupTurn();
 		//time needed: 
 		//listen for the click
 		//change the cursor for hovering over a clickable event 
@@ -335,68 +297,31 @@ class Game {
 		// 	3. Pawn moves to new div. 
 		this.switchToOtherPlayer();
 	}
-
 	gameSetup() {
 		//THIS WORKS
 		this.redPawns = this.generatePawns("red", 1);
 		this.bluePawns = this.generatePawns("blue", 5);
-		
 		this.currentDeck = this.generateDeck(deck);
 		this.pushCardsintoHand(this.currentDeck);
-
-	}
-
-	setupTurn() {
-		//console.log(this.whoseTurn);
-		if (this.whoseTurn === "red") {
-			$('.red-pawn').addClass('clickable');
-			$('.red-cards').addClass('card-clickable');
-			//add to x,y positions to start. 
-			//console.log("test");
-			//console.log($('.red-pawn'));
-		} else if (this.whoseTurn === "blue") {
-			$('.blue-pawn').addClass('clickable');
-			$('.blue-cards').addClass('card-clickable');
-			console.log($('blue-cards'));
-		} else {
-			return false;
-		}
-		//using addclass becuase I don't want to override existing class
-		//put pawns down and make them clickable
-		//look at whoseTurn
-		//find the elements red-pawn and blue-pawn
 	}
 	singleMove() {
 		//we have our pawn clicked
 		//we have our card clicked, presumably
-		clearPawnClickables();
-		$('.red-pawn').addClass('clickable');
-		if(whoseTurn === "red"){
+		
+		
+		if (whoseTurn === "red") {
 			//get the card itself
 			//having trouble moving from on.click to card on.click
 			let currentCard = redHand[cardClickedIndex];
 			//looking at possible moves
-
 			this.clickedPawnY;
 			this.clickedPawnX;
-
-
-	
 		}
-		if(whoseTurn === "blue") {
-
-		}
+		if (whoseTurn === "blue") {}
 		//whose turn ---> hand (red)
 		//allow for select red pawns, and red cards
 		//with the clicks, take that info and make the board spots clickable, find x and y for the possible moves. Take pawn and substract or add the properties of whichever move they click on the board. 
 		//	
-	}
-	clearPawnClickables() {
-		$('.clickable').removeClass('clickable');
-		
-	}
-	clearCardClickable() {
-		$('.card-clickable').removeClass('card-clickable');
 	}
 	senseiStone(pawnnumber) {}
 	senseiStream(x, y) {}
@@ -414,36 +339,29 @@ class Game {
 		let fullDeck = [];
 		fullDeck = deck.slice(0); //fullDeck means 16 deck copy
 		//console.log(fullDeck);
-		 //five cards
+		//five cards
 		for (let i = 0; i <= 4; i++) {
-			this.currentDeck.push(fullDeck.splice(Math.floor(Math.random() * fullDeck.length), 1)[0]); 
+			this.currentDeck.push(fullDeck.splice(Math.floor(Math.random() * fullDeck.length), 1)[0]);
 			//console.log(fullDeck);
 			//console.log(currentDeck);
 		}
 		//console.log(currentDeck);
 		return this.currentDeck;
 	}
-
 	pushCardsintoHand(currentDeck) {
 		//no pop because I need to keep track of all five of the cards together. 
-		this.redHand.push(currentDeck[0]); 
+		this.redHand.push(currentDeck[0]);
 		this.redHand.push(currentDeck[1]);
 		this.blueHand.push(currentDeck[2]);
 		this.blueHand.push(currentDeck[3]);
 		this.sideCard = currentDeck[4];
-
 		// flips them over to be visible
 		$('#redcard1').attr('src', this.redHand[0].img);
 		$('#redcard2').attr('src', this.redHand[1].img);
-
-
 		// flip blue cards to be visible
 		$('#bluecard1').attr('src', this.blueHand[0].img);
 		$('#bluecard2').attr('src', this.blueHand[1].img);
-
-
 		$('#side-card').attr('src', this.sideCard.img);
-
 		console.log(this.redHand);
 		console.log(this.blueHand);
 		console.log(this.sideCard);
@@ -464,34 +382,24 @@ class Game {
 	chooseMove() {
 		// makes clicking a square do something
 		//
-
-
 		let currentMoveX = 0;
 		let currentMoveY = 0;
-
-		if(this.whoseTurn === "red") {
-			for(let i = 0; i < this.cardClicked.moves[length]; i++){
+		if (this.whoseTurn === "red") {
+			for (let i = 0; i < this.cardClicked.moves[length]; i++) {
 				let singleMoveY = this.cardClicked.moves[i].y + currentMoveY;
 				let singleMoveX = this.cardClicked.moves[i].x + currentMoveX;
-				if (
-					singleMoveX == $('.square').val('data-x') && 
-					singleMoveX == $('.square').val('data-y')
-					) {
-					clearPawnClickables();
-					$('.square').addClass('.clickable')
+				if (singleMoveX == $('.square').val('data-x') && singleMoveX == $('.square').val('data-y')) {
+					
+	
 				}
 				//Check singleMove against any div tag with data-x, data-y
 				//if it doesn't match any, don't assign
 				//if it does match, assign the square with the matchin x and y a clickable class. 
-					this.currentPawn.x = this.singleMoveX;
-					this.currentPawn.y = this.singleMoveY;
+				this.currentPawn.x = this.singleMoveX;
+				this.currentPawn.y = this.singleMoveY;
 			}
-			$('.square').addClass('clickable');
-
-		} else {
-
-		}
-
+			//remove pawn choice, append the image to the div
+		} else {}
 		let currentMoveX = $('.square').attr('data-x')
 		let currentMoveY = $('.square').attr('data-y')
 	}
@@ -500,55 +408,57 @@ let game = new Game();
 game.gameSetup();
 /*****************Listeners************/
 //NOT ABLE TO GET TO PARENT
-$('.clickable').on('click', (e) => {
-	game.clickedPawnX = $(e.target).parent().attr('data-x');
-	game.clickedPawnY = $(e.target).parent().attr('data-y');
-	game.currentPawn = $(e.target).parent().addClass('current-pawn');
-	
-});
-// $('.card-clickable').on('click', (e) => {
-// 	console.log("is this card clickable firing");
-// 	game.cardClickedIndex = $(e.currentTarget).attr('data-card');
-// });
+$('.pawn').on('click', (e) => {
+	if (game.waitingforPawn === true) {
+		let itsRedPawn = $(e.currentTarget).hasClass('red-pawn');
+		console.log(itsRedPawn + " it's Red Pawn");
+		if (itsRedPawn) {
+			if (game.whoseTurn === "red") {
+				game.clickedPawnX = $(e.target).parent().data('x');
+				game.clickedPawnY = $(e.target).parent().data('y');
+				game.currentPawn = $(e.target).parent().addClass('current-pawn');
+				console.log(game.currentPawn + "After Red turn, this is the current pawn assignation");
+				game.waitingforCard = true;
+				game.waitingForPawn = false;
+				console.log(game.waitingforPawn + " <<< THIS should be false, red");
+				console.log(game.waitingforCard + " <<< THIS SHOULD BE FALSE, RED");
+			}
+		} else {
+			if (game.whoseTurn === "blue") {
+				game.clickedPawnX = $(e.target).parent().data('x');
+				game.clickedPawnY = $(e.target).parent().data('y');
+				game.currentPawn = $(e.target).parent().addClass('current-pawn');
+				console.log((game.currentPawn + "After Blue turn, this is the current pawn assignation"));
 
-
-// pawn listener
-	// if (it was ok to click a pawn (booean in game state))
-		// all pawn code - use red/blue state info 
-
-
-
-
-$('.cards').on('click', (e) => {
-
-
-	// only do all of the following code if it was ok to click a card
-
-	let itsRed = $(e.currentTarget).hasClass('red-cards');
-
-	if(itsRed) { // if red card was clicked
-
-		// if it's red's turn
-		if(game.whoseTurn === "red") { 
-
-			console.log("red card was clicked and that's ok because it's reds turn")
-			// make boolean true: amIexpectingAClickOnASquare
-
-		}
-
-	} else {  // else (if blue was clicked)
-
-		if(game.whoseTurn.toString() === "blue") {
-
-			console.log("blue card was clicked and that's ok because it's blue's turn")
-		}
-
+				console.log(game.waitingforPawn + " <<<This should be false, blue");
+				console.log(game.waitingforCard + " <<<THIS SHOULD BE TRUE BLUE ");
+			}
+		} 
+		
+				game.waitingforCard = true;
+				game.waitingForPawn = false;
 	}
-
-
-
+});
+$('.cards').on('click', (e) => {
+	// only do all of the following code if it was ok to click a card
+	if (game.waitingforCard === true) {
+		let itsRedCard = $(e.currentTarget).hasClass('red-cards');
+		let itsBlueCard = $(e.currentTarget).hasClass('blue-cards');
+		console.log(itsRedCard + " its red card");
+		if (itsRedCard) { // if red card was clicked
+			// if it's red's turn
+			if (game.whoseTurn === "red") {
+				console.log(" red card was clicked and that's ok because it's reds turn")
+				// make boolean true: amIexpectingAClickOnASquare
+				game.waitingforCard = false;
+				game.waitingforSquare = true;
+			}
+		} else { // else (if blue was clicked)
+			if (game.whoseTurn === "blue") {
+				console.log(" blue card was clicked and that's ok because it's blue's turn")
+				game.waitingforCard = false;
+				game.waitingforSquare = true;
+			}
+		}
+	}
 })
-
-
-
-
