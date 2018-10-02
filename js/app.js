@@ -255,18 +255,17 @@ class Game {
 		this.sideCard = {};
 		this.selectedCard = {}; //this is to hold the player's selected card after pawn select
 		this.whoseTurn = "red"; //true for red?
-		this.chosenPawnElement = {};
 		this.clickedPawnX = null;
 		this.clickedPawnY = null;
 		this.cardClicked = "";
 		this.currentDeck = [];
-		this.waitingforSquare = false;
-		this.waitingforCard = false;
-		this.waitingforPawn = true;
 		this.currentPawn = null;
 		this.cardClickedIndex = null;
 		this.newPawnPositionY = null;
 		this.newPawnPositionX = null;
+		this.waitingforSquare = false;
+		this.waitingforCard = false;
+		this.waitingforPawn = true;
 	}
 	gameSetup() {
 		//THIS WORKS
@@ -286,11 +285,13 @@ class Game {
 				return false;
 		}
 	}
-	endGame() {
-		if (senseiStream() === true) {
+	checkVictory() {
+		if (senseiStream() === true || senseiStone() === true) {
 			//RED WINS, RED IS TRUE
-		} else {
+		} else if (senseiStream() === false || senseiStone() === false){
 			//BLUE WINS, BLUE IS FALSE
+		} else {
+			break;
 		}
 	}
 	generatePawns(color, y) {
@@ -334,9 +335,31 @@ class Game {
 		// console.log(this.blueHand);
 		// console.log(this.sideCard);
 	}
-	removeOpponentPawn() {
-		//assume that the pawn img has just moved in to the div from clicking
-		//if inside the div tag there are two images, remove the FIRST one (since we are using append for the pawn that just moved in)
+	removeOpponentPawn(e) {
+		//TWO WAYS I can do this. 
+		//1. On player turn, any pawns with the class that's NOT the player's get removed. 
+
+		//If it's red's turn, and....
+		if(this.whoseTurn === "red") {
+			//target square contains blue pawn, remove it!
+			$(e.target).remove($('.blue-pawn'));
+		} 
+		//If it's blue's turn, and....
+		if(this.whoseTurn === "blue") {
+			//target square contains red pawn, remove it!
+			$(e.target).remove($('.red-pawn'));
+		}
+
+	}
+	checkIfPawnOfColorIsThere(e){
+		if(this.whoseTurn === "red") {
+			if ($(e.target).has('.red-pawn')) {
+				//don't allow e.target??????
+			}
+		} else {
+			break;
+		}
+
 	}
 	switchCards() {
 		//need a third variable to temporarily store the side card
@@ -347,16 +370,33 @@ class Game {
 		} else {
 			let sideCardMoving = this.blueHand.splice(this.cardClickedIndex);
 			this.blueHand.append(this.sideCard);
-			this.sideCard = sideCardMoving;	
+			this.sideCard = sideCardMoving;
 		}
 		//
 	}
 	switchToOtherPlayer() {
 		if (this.whoseTurn === "red") {
 			this.whoseTurn = "blue";
+			this.clickedPawnX = null;
+			this.clickedPawnY = null;
+			this.cardClicked = "";
+			this.currentDeck = [];
+			this.currentPawn = null;
+			this.cardClickedIndex = null;
+			this.newPawnPositionY = null;
+			this.newPawnPositionX = null;
+
 			//console.log(this.whoseTurn);
 		} else if (this.whoseTurn === "blue") {
 			this.whoseTurn = "red";
+			this.clickedPawnX = null;
+			this.clickedPawnY = null;
+			this.cardClicked = "";
+			this.currentDeck = [];
+			this.currentPawn = null;
+			this.cardClickedIndex = null;
+			this.newPawnPositionY = null;
+			this.newPawnPositionX = null;
 		}
 		//console.log(this.whoseTurn);
 	}
@@ -373,20 +413,25 @@ class Game {
 				//checking the possible move against the div tags
 				if (this.newPawnPositionX === $(e.target).data('x') && this.newPawnPositionY === $(e.target).data('y')) {
 					//If the div's data x and y are equal to any of the above loops, which is above, allow that click??? Or is it already allowed? 
-
 					//assume it's already allowed, then current target should get pawn img reassigned to that div. 
 					//THE REASON THE DIV TAG AND THE IMG CHILD HAVE THE SAME CLASS IS BECAUSE IN ORDER TO MOVE IT I NEED TO SELECT THE SPECIFIC CLASS THAT IS HOUSING THE DIV. 
 					let currentPawnImage = this.currentPawn.detach();
 					$(e.target).append(currentPawnImage); //appends that thing to the target click.
 					//Should be able to see in console and on screen the pawn move. 
-
 					console.log(this.currentPawn + " current pawn within movePawn loop");
 					//hold current pawn in variable so that when removal happens, I can append the variable to the correct div element
-					
-				}
-			
-			}
 
+					//INSIDE HERE RUN METHODS 
+					//remove current-pawn-container
+					$('div').remove($('.current-pawn-container'));
+					this.removeOpponentPawn(this.e);
+					//NOW remove current-pawn class
+					$('img').removeClass('current-pawn')
+					//this.checkVictory();
+					//this.switchCards(); <<< make sure it happens before player switch, because clearing of cardClickedIndex
+					//this.switchToOtherPlayer();
+				}
+			}
 		} else {
 			let bluePawnMovesY = this.cardClicked.moves[i].y;
 			let bluePawnMovesX = this.cardClicked.moves[i].x;
@@ -408,11 +453,11 @@ class Game {
 			}
 			this.clickedPawnY = bluePawnMovesY + this.clickedPawnY;
 			this.clickedPawnX = bluePawnMovesX + this.clickedPawnX;
-			if (this.clickedPawnX === $(e.target).data('x') && this.clickedPawnY === $(e.target).data('y')) {
-				//add class to squares that makes them clickable
-				$(e.target).addClass('click-square');
-				//this.clickedPawnY = this.clickedPawnY - bluePawnMovesY;
-				//this.clickedPawnX = this.clickedPawnX - bluePawnMovesX;
+			if (this.newPawnPositionX === $(e.target).data('x') && this.newPawnPositionY === $(e.target).data('y')) {
+				let currentPawnImage = this.currentPawn.detach();
+				$(e.target).append(currentPawnImage); //appends that thing to the target click.
+				//Should be able to see in console and on screen the pawn move. 
+				console.log(this.currentPawn + " current pawn within movePawn loop");
 			}
 		}
 	}
@@ -491,7 +536,5 @@ $('.cards').on('click', (e) => {
 $('.square').on('click', (e) => {
 	if (game.waitingforSquare === true) {
 		game.movePawn(e);
-		
-		
 	}
 })
