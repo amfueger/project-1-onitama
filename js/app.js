@@ -375,12 +375,10 @@ class Game {
 					//If the div's data x and y are equal to any of the above loops, which is above, allow that click??? Or is it already allowed? 
 
 					//assume it's already allowed, then current target should get pawn img reassigned to that div. 
-					this.chosenPawnElement = $('.pawn.current-pawn');//the img that has current-pawn class.
-					//$('div .current-pawn').eq(0).detatch(); //takes the class current-pawn that rests on the div and detaches the first child, which is the img
-					$('div > .current-pawn').eq(0).detatch();
-					console.log($('div.current-pawn') + " show that the div tag is empty"); //shows div tag is empty
-					$(e.target).append(this.chosenPawnElement); //appends that thing to the target click.
-					console.log(this.chosenPawnElement +  " inside its div this should be IMG"); //test whether that img's 
+					//THE REASON THE DIV TAG AND THE IMG CHILD HAVE THE SAME CLASS IS BECAUSE IN ORDER TO MOVE IT I NEED TO SELECT THE SPECIFIC CLASS THAT IS HOUSING THE DIV. 
+					let currentPawnImage = this.currentPawn.detach();
+					$(e.target).append(currentPawnImage); //appends that thing to the target click.
+					//Should be able to see in console and on screen the pawn move. 
 
 					console.log(this.currentPawn + " current pawn within movePawn loop");
 					//hold current pawn in variable so that when removal happens, I can append the variable to the correct div element
@@ -431,7 +429,7 @@ $('.pawn').on('click', (e) => {
 				game.clickedPawnX = $(e.target).parent().data('x'); //works
 				game.clickedPawnY = $(e.target).parent().data('y'); //works
 				//assigns current-pawn class to both div and child img. This is to ensure recovery of x/y data and allow the img to move. 
-				game.currentPawn = $(e.target).parent().addClass('current-pawn').children('img').addClass('current-pawn');
+				game.currentPawn = $(e.target).parent().addClass('current-pawn-container').children('img').addClass('current-pawn');
 				//game.currentPawn = $('.current-pawn');
 				//This inclues the div class and the pawn itself. Note this for later because only the img moves.
 				//console.log(game.currentPawn + "After Red turn, this is the current pawn assignation");
@@ -447,7 +445,7 @@ $('.pawn').on('click', (e) => {
 				game.clickedPawnX = $(e.target).parent().data('x');
 				game.clickedPawnY = $(e.target).parent().data('y');
 				game.currentPawn = $(e.target).parent().addClass('current-pawn').children('img').addClass('current-pawn');
-				game.currentPawn = $('.current-pawn'); //This inclues the div class and the pawn itself. Note this for later because only the img moves.
+				//game.currentPawn = $('.current-pawn'); //This inclues the div class and the pawn itself. Note this for later because only the img moves.
 				//console.log(game.currentPawn + "After Blue turn, this is the current pawn assignation");
 				game.waitingforCard = true;
 				game.waitingForPawn = false;
