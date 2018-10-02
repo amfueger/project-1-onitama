@@ -2,19 +2,19 @@
 Step by Step Game Play
 /********************************************************************/
 
-1. Start Button
+1. Start Button 
 2. Solicit input from user on player color, Red or Blue
 3. Board sets
-	1. 5x5 board
-	2. Red pawns on one side in a line 1[1,1] 2[1,2] 3[1,3] 4[1,4] 5[1,5] 
-	3. Blue pawns on opposite side in a line 1[5,5] 2[5,4] 3[5,3] 4[5,2] 5[5,1]
+	1. 5x5 board CHECK
+	2. CHECK Red pawns on one side in a line 1[1,1] 2[1,2] 3[1,3] 4[1,4] 5[1,5] 
+	3. CHECK Blue pawns on opposite side in a line 1[5,5] 2[5,4] 3[5,3] 4[5,2] 5[5,1]
 	4. First player is determined by random pick
-	5. Five cards are drawn from 16 card deck object, stored in array
-	6. Each user is given two cards, face up
+	5. CHECK Five cards are drawn from 16 card deck object, stored in array
+	6. CHECK-ish Each user is given two cards, face up
 		1. Can't decide if I mutate array and use logic to prevent Red from clicking Blue's cards, 
 		or create function to move a card out of the array to replace it with the sideCard, which would mean blue can't click red's cards and vice versa. 
 	7. Fifth card sits off to the side, face up
-4. Board is ready
+4. CHECK Board is ready
 	1. Let Blue/Red know it is their turn
 	2. Text prompt to select Pawn number
 5. Pawn selected - click pawn on board OR click separate button
