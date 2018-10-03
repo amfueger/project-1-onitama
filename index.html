@@ -3,19 +3,34 @@
 <head>
 	<title></title>
 	<link href="css/style.css" rel="stylesheet" type="text/css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300i|Sedgwick+Ave" rel="stylesheet">
+
 	</script>
 </head>
 <body>
 	<div class="game-board">
-		 <div class="left-side">
-  </div>
-		<div class="blue-cards cards"><img class="blue-card-position" data-card="0" id="bluecard1" src="test-images/cardback.jpg"> <img class="blue-card-position" data-card="1" id="bluecard2" src="test-images/cardback.jpg"></div>
+		<div class="left-side">
+			<div class="logo"><img src="card-images/logo.webp"/></div>
+			<h2 class ="left-text">How to play</h2>
+			<h3 class ="left-text">Step 1: Move and Attack</h3>
+			<p class ="left-text">On your turn, examine and choose one of the two Move cards in front of you. Then, move one of your pawns as shown on that card, with the location of the pawn corresponding to the black square on the card.</p>
+			<h3 class ="left-text" >Step 2: Exchange Cards</h3>
+			<p class ="left-text">Your previously used Move card is placed on the side of the board while you add the previous side card to your hand.</p>
+			<h3 class ="left-text">How do I win?</h3>
+			<p class ="left-text">You either capture your opponent's Master pawn, or you move your own Master pawn to the opponent's Temple Arch space.</p>
+			<h3 class ="left-text">What if I don't want to move?</h3>
+			<p class ="left-text">If you have a legal move, you must take it, even if it traps you or otherwise ends up with your losing a pawn. If you absolutely do not have a legal move, you may pass, but still switch cards with the side card.</p>
+
+			
+
+		</div>
 		<div class="playing-area">
+
+			<div class="blue-cards cards"><img class="blue-card-position" data-card="0" id="bluecard1" src="test-images/cardback.jpg"> <img class="blue-card-position" data-card="1" id="bluecard2" src="test-images/cardback.jpg"></div>
 			<div class="square-limit">
 				<div class="square" data-number="1" data-x="1" data-y="5"><img class="blue-pawn pawn" id="blue-pawn-1" src="card-images/bluemonk.jpg"></div>
 				<div class="square" data-number="2" data-x="2" data-y="5"><img class="blue-pawn pawn" id="blue-pawn-2" src="card-images/bluemonk.jpg"></div>
-				<div class="square" data-number="3" data-x="3" data-y="5"><img class="blue-pawn pawn" id="blue-pawn-3" src="card-images/bluemonk.jpg"></div>
+				<div class="square" data-number="3" data-x="3" data-y="5"><img class="blue-pawn pawn" id="blue-pawn-3" src="card-images/sensei.gif"></div>
 				<div class="square" data-number="4" data-x="4" data-y="5"><img class="blue-pawn pawn" id="blue-pawn-4" src="card-images/bluemonk.jpg"></div>
 				<div class="square" data-number="5" data-x="5" data-y="5"><img class="blue-pawn pawn" id="blue-pawn-5" src="card-images/bluemonk.jpg"></div>
 				<div class="square" data-number="6" data-x="1" data-y="4"></div>
@@ -29,25 +44,30 @@
 				<div class="square" data-number="14" data-x="4" data-y="3"></div>
 				<div class="square" data-number="15" data-x="5" data-y="3"></div>
 				<div class="square" data-number="16" data-x="1" data-y="2"></div>
-				<div class="square" data-number="17" sdata-x="2" data-y="2"></div>
+				<div class="square" data-number="17" data-y="2"></div>
 				<div class="square" data-number="18" data-x="3" data-y="2"></div>
 				<div class="square" data-number="19" data-x="4" data-y="2"></div>
 				<div class="square" data-number="20" data-x="5" data-y="2"></div>
 				<div class="square" data-number="21" data-x="1" data-y="1"><img class="red-pawn pawn" id="red-pawn-1" src="test-images/monktest.png"></div>
 				<div class="square" data-number="22" data-x="2" data-y="1"><img class="red-pawn pawn" id="red-pawn-2" src="test-images/monktest.png"></div>
-				<div class="square" data-number="23" data-x="3" data-y="1"><img class="red-pawn pawn" id="red-pawn-3" src="test-images/monktest.png"></div>
+				<div class="square" data-number="23" data-x="3" data-y="1"><img class="red-pawn pawn" id="red-pawn-3" src="card-images/sensei.gif"></div>
 				<div class="square" data-number="24" data-x="4" data-y="1"><img class="red-pawn pawn" id="red-pawn-4" src="test-images/monktest.png"></div>
 				<div class="square" data-number="25" data-x="5" data-y="1"><img class="red-pawn pawn" id="red-pawn-5" src="test-images/monktest.png"></div>
 			</div>
-			<img id="side-card" src="test-images/cardback.jpg">
-			<div class="outside-board">
+			<div class="red-cards cards"><img class="red-card-position" data-card="0" id="redcard1" name="" src="test-images/cardback.jpg"> <img class="red-card-position" data-card="1" id="redcard2" name="" src="test-images/cardback.jpg"></div>
+		</div>
+		<div class="right-side">
+			<div class="rounds"></div>
+			<div class="text-area">
 				<p>Testing!</p>
 			</div>
-		</div>
-		<div class="red-cards cards"><img class="red-card-position" data-card="0" id="redcard1" name="" src="test-images/cardback.jpg"> <img class="red-card-position" data-card="1" id="redcard2" name="" src="test-images/cardback.jpg">
+			<div class="side-card">
+				<h2>Side Card</h2>
+				<img id="side-card" src="test-images/cardback.jpg"></div>
+			<div class="start-button"></div>
 		</div>
 	</div>
-	<script src="js/app.js" type="text/javascript">
-	</script>
+
+	<script type="text/javascript" src="js/app.js"></script></script>
 </body>
 </html>
