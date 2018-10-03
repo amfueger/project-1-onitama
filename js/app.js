@@ -475,27 +475,28 @@ class Game {
 	}
 	//IDEAS On fixing this!!! I'm thinking I pull all the possible moves into an array, and then take that array and compare it. 
 	//if I click a div that its x and y coordinates DO NOT equal the combined amount of the current pawn's coordinates and the possible move, return false. 
-	isLegalMove(etarget) {
-	//	console.log(e);
-	//	console.log(e.target);
-	console.log(this.cardClicked);
-	console.log(this.cardClicked.moves);
-	console.log(this.cardClicked.moves[0]);
-	console.log(this.cardClicked.moves[0].y);
+	isLegalMove(e) {
+
+		console.log(this.cardClicked, " this is this.card.Clicked in isLegalMove");
+		console.log(this.cardClicked.moves, " this is this.card.Clicked.moves in isLegalMove");
+		// console.log(this.cardClicked.moves[0]);
 		let tempNewPawnPositionY = null;
 		let tempNewPawnPositionX = null;
 		if (this.whoseTurn === "red") {
-			for (let i = 0; i < 5; i++) {
+			for (let i = 0; i < this.cardClicked.moves.length; i++) {
 			//	console.log(this.cardClicked.moves[0].y + " testing card clicked move 1 y number");
 				//console.log(this.cardClicked.moves[i].y + " testing card clicked with i number");
-				tempNewPawnPositionY = this.cardClicked.moves[i].y; + this.clickedPawnY;
-				tempNewPawnPositionX = this.cardClicked.moves[i].x; + this.clickedPawnX;
-				if (tempNewPawnPositionX === $(etarget).data('x') && tempNewPawnPositionY === $(etarget).data('y') && this.checkIfPawnOfColorIsThere(e) === false) {
-					//console.log("you can't click here");
+				tempNewPawnPositionY = this.cardClicked.moves[i].y + this.clickedPawnY; // set test Y val
+				tempNewPawnPositionX = this.cardClicked.moves[i].x + this.clickedPawnX; // set test X val
+
+				if( tempNewPawnPositionX === $(e.target).data('x') 
+					&& tempNewPawnPositionY === $(e.target).data('y') 
+					&& this.checkIfPawnOfColorIsThere(e) === false ) {
+					console.log("move is valid--red turn");
 					return true;
 				}
 			}
-			console.log("move is valid");
+			console.log("move is not valid");
 			return false;
 		} else {
 			for (let i = 0; i < 5; i++) {
@@ -535,21 +536,26 @@ class Game {
 			console.log($(e.target).data('y') + "test for div y");
 			console.log(this.cardClicked.moves[0].y + " testing cardclicked position 0 and its y");
 			// make sure this move legal according to the card
-			this.isLegalMove($(e.target));
-			if (this.isLegalMove() === true) {
+
+
+
+
+			if (this.isLegalMove(e) === true) {
+				console.log("move is legal according to the isLegalMove")
+				// console.log();
 				this.newPawnPositionY = $(e.target).data('y')
 				this.newPawnPositionX = $(e.target).data('x')
 				let currentPawnImage = this.currentPawn.detach();
 				$(e.target).append(currentPawnImage);
 				$('div').remove($('.current-pawn-container'));
-				$('img').removeClass('current-pawn')
+				$('img').removeClass('current-pawn');
 			}
 			this.victoryBlue();
 			this.victoryRed()
 			this.switchCards();
 		} else {
-			this.isLegalMove($(e.target));
-			if (this.isLegalMove() === true) {
+			
+			if (this.isLegalMove(e) === true) {
 				let currentPawnImage = this.currentPawn.detach();
 				$(e.target).append(currentPawnImage);
 				$('div').remove($('.current-pawn-container'));
