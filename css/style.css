@@ -19,10 +19,11 @@
 	border: 1px solid black;
 	width: 620px;
 	height: 620px;
-	
-	
-	
+	float: left;
 }
+.playing-area{
+}	
+	
 .square {
 	width: 118px;
 	height: 118px;
@@ -36,12 +37,10 @@
 .red-card-position, .blue-card-position, #side-card {
 	height: 200px;
 	width: 350px;
-	
-
 }
-#side-card{
+#side-card {
 	transform: rotate(90deg);
-	
+
 }
 .outside-board {
 	border: 1px solid black;
