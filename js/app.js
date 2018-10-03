@@ -475,7 +475,7 @@ class Game {
 	}
 	//IDEAS On fixing this!!! I'm thinking I pull all the possible moves into an array, and then take that array and compare it. 
 	//if I click a div that its x and y coordinates DO NOT equal the combined amount of the current pawn's coordinates and the possible move, return false. 
-	isLegalMove(e) {
+	isLegalMove(etarget) {
 	//	console.log(e);
 	//	console.log(e.target);
 	console.log(this.cardClicked);
@@ -490,7 +490,7 @@ class Game {
 				//console.log(this.cardClicked.moves[i].y + " testing card clicked with i number");
 				tempNewPawnPositionY = this.cardClicked.moves[i].y; + this.clickedPawnY;
 				tempNewPawnPositionX = this.cardClicked.moves[i].x; + this.clickedPawnX;
-				if (tempNewPawnPositionX === $(e.target).data('x') && tempNewPawnPositionY === $(e.target).data('y') && this.checkIfPawnOfColorIsThere(e) === false) {
+				if (tempNewPawnPositionX === $(etarget).data('x') && tempNewPawnPositionY === $(etarget).data('y') && this.checkIfPawnOfColorIsThere(e) === false) {
 					//console.log("you can't click here");
 					return true;
 				}
