@@ -473,27 +473,30 @@ class Game {
 			}
 		}
 	}
-
 	//IDEAS On fixing this!!! I'm thinking I pull all the possible moves into an array, and then take that array and compare it. 
 	//if I click a div that its x and y coordinates DO NOT equal the combined amount of the current pawn's coordinates and the possible move, return false. 
 	isLegalMove(e) {
-		console.log(e);
-		console.log(e.target);
+	//	console.log(e);
+	//	console.log(e.target);
+	console.log(this.cardClicked);
+	console.log(this.cardClicked.moves);
+	console.log(this.cardClicked.moves[0]);
+	console.log(this.cardClicked.moves[0].y);
 		let tempNewPawnPositionY = null;
 		let tempNewPawnPositionX = null;
 		if (this.whoseTurn === "red") {
 			for (let i = 0; i < 5; i++) {
-				//console.log(this.cardClicked.bluePawnMovesY[0].y + " testing card clicked move 1 y number");
+			//	console.log(this.cardClicked.moves[0].y + " testing card clicked move 1 y number");
+				//console.log(this.cardClicked.moves[i].y + " testing card clicked with i number");
 				tempNewPawnPositionY = this.cardClicked.moves[i].y; + this.clickedPawnY;
 				tempNewPawnPositionX = this.cardClicked.moves[i].x; + this.clickedPawnX;
-				console.log(tempNewPawnPositionX + " IS THIS A GODDAMN NUMBER???");
-				if (tempNewPawnPositionX != $(e.target).data('x') || tempNewPawnPositionY != $(e.target).data('y') || this.checkIfPawnOfColorIsThere(e) === false) {
-					console.log("you can't click here");
-					return false;
+				if (tempNewPawnPositionX === $(e.target).data('x') && tempNewPawnPositionY === $(e.target).data('y') && this.checkIfPawnOfColorIsThere(e) === false) {
+					//console.log("you can't click here");
+					return true;
 				}
 			}
 			console.log("move is valid");
-			return true;
+			return false;
 		} else {
 			for (let i = 0; i < 5; i++) {
 				let bluePawnMovesY = this.cardClicked.moves[i].y;
@@ -514,49 +517,48 @@ class Game {
 				if (bluePawnMovesX > -1) {
 					bluePawnMovesX = this.cardClicked.moves[i].x * -1;
 				}
-
 				tempNewPawnPositionY = Number(bluePawnMovesY + this.clickedPawnY);
 				tempNewPawnPositionX = Number(bluePawnMovesX + this.clickedPawnX);
-				if (tempNewPawnPositionX != $(e.target).data('x') || tempNewPawnPositionY != $(e.target).data('y') || this.checkIfPawnOfColorIsThere(e) === false) {
-						console.log("You can't click here!");
-						return false;
+				if (tempNewPawnPositionX === $(e.target).data('x') && tempNewPawnPositionY === $(e.target).data('y') && this.checkIfPawnOfColorIsThere(e) === false) {
+					console.log("You can click here");
+					return true;
 				} //if
 			} //for
-			console.log("Move is valid");
-			return true;
+			console.log("can't click here");
+			return false;
 		} //else
-
 	} //finished
-			movePawn(e) {
-				if (this.whoseTurn === "red") {
-					console.log(e + " test for event");
-					console.log($(e.target).data('y') + "test for div y");
-					console.log(this.cardClicked.moves[0].y + " testing cardclicked position 0 and its y");
-					// make sure this move legal according to the card
-					this.isLegalMove(this.e);
-					if (this.isLegalMove() === true) {
-						this.newPawnPositionY = $(e.target).data('y')
-						this.newPawnPositionX = $(e.target).data('x')
-						let currentPawnImage = this.currentPawn.detach();
-						$(e.target).append(currentPawnImage);
-						$('div').remove($('.current-pawn-container'));
-						$('img').removeClass('current-pawn')
-					}
-					this.victoryBlue();
-					this.victoryRed()
-					this.switchCards();
-				} else {
-					this.isLegalMove(e);
-					if(this.isLegalMove() === true) {
-					let currentPawnImage = this.currentPawn.detach();
-					$(e.target).append(currentPawnImage);
-					$('div').remove($('.current-pawn-container'));
-					$('img').removeClass('current-pawn')
-				}
-					this.victoryBlue();
-					this.victoryRed()
-					this.switchCards();
-			} //else
+	movePawn(e) {
+
+		if (this.whoseTurn === "red") {
+			console.log(e + " test for event");
+			console.log($(e.target).data('y') + "test for div y");
+			console.log(this.cardClicked.moves[0].y + " testing cardclicked position 0 and its y");
+			// make sure this move legal according to the card
+			this.isLegalMove($(e.target));
+			if (this.isLegalMove() === true) {
+				this.newPawnPositionY = $(e.target).data('y')
+				this.newPawnPositionX = $(e.target).data('x')
+				let currentPawnImage = this.currentPawn.detach();
+				$(e.target).append(currentPawnImage);
+				$('div').remove($('.current-pawn-container'));
+				$('img').removeClass('current-pawn')
+			}
+			this.victoryBlue();
+			this.victoryRed()
+			this.switchCards();
+		} else {
+			this.isLegalMove($(e.target));
+			if (this.isLegalMove() === true) {
+				let currentPawnImage = this.currentPawn.detach();
+				$(e.target).append(currentPawnImage);
+				$('div').remove($('.current-pawn-container'));
+				$('img').removeClass('current-pawn')
+			}
+			this.victoryBlue();
+			this.victoryRed()
+			this.switchCards();
+		} //else
 		this.switchToOtherPlayer();
 	} //end of movePawn
 } //end of methods
