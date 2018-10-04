@@ -237,15 +237,29 @@ class Deck {
 }
 //Pawn class
 class Pawn {
-	constructor(x, y, color, pawnnumber, live) {
+	constructor(x, y, color, pawnnumber, live, i) {
 		this.x = x;
 		this.y = y;
 		this.color = color;
 		this.pawnnumber = pawnnumber;
-		this.live = live;
-		// don't need sensei because it's always three. 
-		//storing pawns in an array, will hide within the array using boolean instead of removing because otherwise that changes the position of the pawns upon calling them. 
+		this.live = live;	
+		this.placement = this.choosePawnImgPlacement(x, y, color);
+		this.img = this.choosePawnImgId(i);
 	};
+	choosePawnImgId(i) {
+		this.img = $('</img>', {
+			id: 'red-pawn-' + i,
+			src: 'test-images/monktest.png',
+			class: 'red-pawn pawn'
+		});
+		
+	}
+	choosePawnImgPlacement(x, y, color) {
+		//if pawn x and y is equal to 
+		if(this.x === $('.square').data('x') && this.y === $('.square').data('y')) {
+			(this.img).appendTo($('.square'));
+		}
+	}
 }
 //Begin Game function
 class Game {
@@ -320,7 +334,7 @@ class Game {
 		//WORKS
 		let pawns = [];
 		for (let i = 1; i < 6; i++) {
-			pawns.push(new Pawn(i, y, color, i, true));
+			pawns.push(new Pawn(i, y, color, i, true, i));
 		};
 		return pawns;
 	}
