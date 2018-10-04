@@ -282,7 +282,9 @@ class Game {
 				//true is victory!
 				return true;
 				//stream
-			} else if (this.redPawns[2].x === 3 && this.redPawns[2].y === 5) {
+			} else if ($('.square').data('x') === 3 && $('.square').data('y') === 5 && $('.square').children().hasClass('red-pawn-3')) {
+				//(the div container with x = 3 and y = 5 contains img red-pawn-3)
+				//(this.redPawns[2].x === 3 && this.redPawns[2].y === 5) <- since I didn't use the pawn class.... 
 				//true for victory!
 				return true;
 			}
@@ -298,9 +300,11 @@ class Game {
 				console.log("Red has won!");
 				return true;
 				//stream
-			} else if (this.bluePawns[2].x === 3 && this.bluePawns[2].y === 1) {
+			} else if ($('.square').data('x') === 3 && $('.square').data('y') === 1 && $('.square').children().hasClass('blue-pawn-3')) {
 				//true for victory!
+				//(this.bluePawns[2].x === 3 && this.bluePawns[2].y === 1)
 				console.log("Blue has won!");
+				
 				return true;
 			}
 			//no one has won yet!
